@@ -15,12 +15,16 @@ Options:
     --top N             Show only the top N suppliers by market cap
     --output PATH       Append results to a CSV file (creates it if missing)
     --no-usd            Keep prices in each stock's native currency instead of converting to USD
+    --graph             Open an interactive country-distribution chart in the browser
 """
 
 import argparse
 import csv
 import json
 import sys
+import tempfile
+import webbrowser
+from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -201,6 +205,108 @@ def fmt_mktcap(mkt_cap) -> str:
     return f"${mkt_cap:,.0f}"
 
 
+def build_country_graph(suppliers: list[dict]) -> None:
+    """Build an interactive Plotly chart (choropleth + stacked bar) grouped by
+    supplier country and open it in the default browser."""
+    try:
+        import plotly.graph_objects as go
+        from plotly.subplots import make_subplots
+    except ImportError:
+        sys.exit("Missing dependency: run  pip install -r requirements.txt")
+
+    # Aggregate per country
+    agg: dict[str, dict] = defaultdict(lambda: {"direct": [], "indirect": []})
+    for s in suppliers:
+        country = s.get("country") or "Unknown"
+        tier = s.get("tier", "indirect")
+        label = s.get("short_name") or s.get("company_name") or s.get("ticker")
+        agg[country][tier].append(label)
+
+    # Sort countries by total count (descending) for the bar chart
+    sorted_ctry = sorted(agg.items(), key=lambda x: len(x[1]["direct"]) + len(x[1]["indirect"]), reverse=True)
+
+    country_names  = [c for c, _ in sorted_ctry]
+    direct_counts  = [len(v["direct"])   for _, v in sorted_ctry]
+    indirect_counts= [len(v["indirect"]) for _, v in sorted_ctry]
+    total_counts   = [d + i for d, i in zip(direct_counts, indirect_counts)]
+
+    def company_list(v):
+        lines = []
+        if v["direct"]:
+            lines.append("<b>Direct:</b> " + ", ".join(v["direct"]))
+        if v["indirect"]:
+            lines.append("<b>Indirect:</b> " + ", ".join(v["indirect"]))
+        return "<br>".join(lines)
+
+    hover_texts = [
+        f"<b>{c}</b><br>Total: {t}<br>{company_list(v)}"
+        for (c, v), t in zip(sorted_ctry, total_counts)
+    ]
+
+    fig = make_subplots(
+        rows=2, cols=1,
+        row_heights=[0.55, 0.45],
+        specs=[[{"type": "choropleth"}], [{"type": "xy"}]],
+        subplot_titles=["Supplier Headquarters by Country", "Supplier Count per Country (Direct vs Indirect)"],
+        vertical_spacing=0.06,
+    )
+
+    # --- Choropleth world map ---
+    fig.add_trace(
+        go.Choropleth(
+            locations=country_names,
+            locationmode="country names",
+            z=total_counts,
+            text=hover_texts,
+            hoverinfo="text",
+            colorscale="Blues",
+            colorbar=dict(title="Suppliers", len=0.5, y=0.75),
+            showscale=True,
+            marker_line_color="white",
+            marker_line_width=0.5,
+        ),
+        row=1, col=1,
+    )
+
+    # --- Stacked bar chart ---
+    fig.add_trace(
+        go.Bar(
+            name="Direct",
+            x=country_names,
+            y=direct_counts,
+            marker_color="#1D4ED8",
+            hovertemplate="<b>%{x}</b><br>Direct suppliers: %{y}<extra></extra>",
+        ),
+        row=2, col=1,
+    )
+    fig.add_trace(
+        go.Bar(
+            name="Indirect",
+            x=country_names,
+            y=indirect_counts,
+            marker_color="#93C5FD",
+            hovertemplate="<b>%{x}</b><br>Indirect suppliers: %{y}<extra></extra>",
+        ),
+        row=2, col=1,
+    )
+
+    fig.update_layout(
+        title_text="iPhone Supplier Countries",
+        title_font_size=22,
+        barmode="stack",
+        height=950,
+        template="plotly_white",
+        legend=dict(orientation="h", yanchor="top", y=0.42, xanchor="right", x=1),
+        margin=dict(l=20, r=20, t=60, b=20),
+    )
+    fig.update_yaxes(title_text="Number of suppliers", row=2, col=1)
+
+    tmp = tempfile.NamedTemporaryFile(suffix=".html", delete=False, prefix="iphone_suppliers_map_")
+    fig.write_html(tmp.name)
+    print(f"Graph saved → {tmp.name}")
+    webbrowser.open(f"file://{tmp.name}")
+
+
 SORT_KEYS = {
     "name":     lambda r: (r["company_name"] or "").lower(),
     "ticker":   lambda r: (r["ticker"] or "").lower(),
@@ -239,6 +345,8 @@ def parse_args() -> argparse.Namespace:
                    help="Append results to a CSV file (creates it if missing)")
     p.add_argument("--no-usd", action="store_true",
                    help="Keep prices in native currency instead of converting to USD")
+    p.add_argument("--graph", action="store_true",
+                   help="Open an interactive country-distribution chart in the browser")
     return p.parse_args()
 
 
@@ -323,6 +431,9 @@ def main():
 
     if args.output:
         append_to_csv(suppliers, args.output)
+
+    if args.graph:
+        build_country_graph(suppliers)
 
 
 def append_to_csv(suppliers: list[dict], output_path: str) -> None:
