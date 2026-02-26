@@ -1,0 +1,1729 @@
+{
+  "metadata": {
+    "schema_version": "1.0.0",
+    "data_version": "2024.1",
+    "last_updated": "2026-02-26",
+    "iphone_models": [
+      "iPhone 15",
+      "iPhone 15 Plus",
+      "iPhone 15 Pro",
+      "iPhone 15 Pro Max",
+      "iPhone 16",
+      "iPhone 16 Plus",
+      "iPhone 16 Pro",
+      "iPhone 16 Pro Max"
+    ],
+    "description": "Maps major iPhone electronic components to their direct and indirect supplier chains. Direct supplier = sells the component or service directly to Apple. Indirect supplier = supplies materials, equipment, or sub-components to a direct supplier.",
+    "sources": [
+      "Apple Supplier Responsibility Report 2024",
+      "Apple Supplier Responsibility Report 2023",
+      "Nikkei Asia semiconductor supply chain reporting",
+      "Bloomberg supply chain analysis",
+      "Company annual reports and SEC/stock-exchange filings",
+      "TechInsights / IHS Markit teardown analyses"
+    ],
+    "relationship_confidence_legend": {
+      "confirmed": "Appears in Apple Supplier Responsibility Report or company SEC/exchange filing",
+      "strong_indication": "Multiple credible industry sources corroborate the relationship",
+      "inferred": "Logical inference based on known technology stack and known fab/material relationships"
+    }
+  },
+  "components": [
+    {
+      "component_id": "application_processor",
+      "component_name": "Application Processor (A-series SoC)",
+      "category": "Semiconductor",
+      "description": "Apple-designed ARM-based system-on-chip integrating CPU, GPU, Neural Engine, ISP, and Secure Enclave. Apple designs the chip internally; TSMC is the exclusive foundry partner.",
+      "apple_part_numbers": [
+        "A16 Bionic (iPhone 15, 15 Plus)",
+        "A17 Pro (iPhone 15 Pro, 15 Pro Max)",
+        "A18 (iPhone 16, 16 Plus)",
+        "A18 Pro (iPhone 16 Pro, 16 Pro Max)"
+      ],
+      "direct_suppliers": [
+        {
+          "company_name": "Taiwan Semiconductor Manufacturing Company",
+          "short_name": "TSMC",
+          "supplier_id": "tsmc",
+          "country": "Taiwan",
+          "headquarters_city": "Hsinchu",
+          "publicly_traded": true,
+          "ticker": "TSM",
+          "exchange": "NYSE",
+          "role": "Sole foundry for Apple Silicon; fabricates A-series chips on 3nm process nodes",
+          "what_they_supply": "Wafer fabrication services (foundry)",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "ASML Holding",
+          "short_name": "ASML",
+          "supplier_id": "asml",
+          "country": "Netherlands",
+          "headquarters_city": "Veldhoven",
+          "publicly_traded": true,
+          "ticker": "ASML",
+          "exchange": "NASDAQ",
+          "role": "Sole global supplier of EUV lithography machines required for sub-7nm chip fabrication",
+          "what_they_supply": "Extreme Ultraviolet (EUV) lithography equipment",
+          "supplies_to": ["tsmc"],
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Applied Materials",
+          "short_name": "Applied Materials",
+          "supplier_id": "applied_materials",
+          "country": "United States",
+          "headquarters_city": "Santa Clara, CA",
+          "publicly_traded": true,
+          "ticker": "AMAT",
+          "exchange": "NASDAQ",
+          "role": "Supplies CVD, PVD, and CMP equipment critical to semiconductor wafer processing",
+          "what_they_supply": "Semiconductor manufacturing equipment (deposition, etch, CMP)",
+          "supplies_to": ["tsmc"],
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Lam Research",
+          "short_name": "Lam Research",
+          "supplier_id": "lam_research",
+          "country": "United States",
+          "headquarters_city": "Fremont, CA",
+          "publicly_traded": true,
+          "ticker": "LRCX",
+          "exchange": "NASDAQ",
+          "role": "Supplies etch and deposition systems for advanced logic fabs",
+          "what_they_supply": "Plasma etch and CVD/ALD deposition equipment",
+          "supplies_to": ["tsmc"],
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "KLA Corporation",
+          "short_name": "KLA",
+          "supplier_id": "kla_corporation",
+          "country": "United States",
+          "headquarters_city": "Milpitas, CA",
+          "publicly_traded": true,
+          "ticker": "KLAC",
+          "exchange": "NASDAQ",
+          "role": "Process control and inspection equipment for semiconductor fabs",
+          "what_they_supply": "Wafer inspection and metrology equipment",
+          "supplies_to": ["tsmc"],
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Shin-Etsu Chemical",
+          "short_name": "Shin-Etsu",
+          "supplier_id": "shin_etsu",
+          "country": "Japan",
+          "headquarters_city": "Tokyo",
+          "publicly_traded": true,
+          "ticker": "4063.T",
+          "exchange": "TSE",
+          "role": "World's largest silicon wafer manufacturer; supplies polished 300mm wafers",
+          "what_they_supply": "300mm prime silicon wafers",
+          "supplies_to": ["tsmc"],
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Ibiden",
+          "short_name": "Ibiden",
+          "supplier_id": "ibiden",
+          "country": "Japan",
+          "headquarters_city": "Ogaki, Gifu",
+          "publicly_traded": true,
+          "ticker": "4062.T",
+          "exchange": "TSE",
+          "role": "Manufactures flip-chip BGA substrates used to package Apple Silicon chips",
+          "what_they_supply": "Advanced IC package substrates (ABF substrates)",
+          "supplies_to": ["tsmc"],
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "notes": "Apple designs the A-series chip internally (Apple Silicon team). TSMC is the exclusive manufacturing partner. Apple is the IP owner and does not appear as a supplier in this schema."
+    },
+    {
+      "component_id": "display_oled",
+      "component_name": "OLED Display Panel",
+      "category": "Display",
+      "description": "Flexible OLED panels with ProMotion (120Hz adaptive) on Pro models. Covered by Corning Ceramic Shield glass on the front. Suppliers vary by model tier.",
+      "apple_part_numbers": [
+        "Super Retina XDR OLED (all iPhone 15/16 models)"
+      ],
+      "direct_suppliers": [
+        {
+          "company_name": "Samsung Display",
+          "short_name": "Samsung Display",
+          "supplier_id": "samsung_display",
+          "country": "South Korea",
+          "headquarters_city": "Yongin",
+          "publicly_traded": false,
+          "ticker": null,
+          "exchange": null,
+          "role": "Primary supplier of OLED panels; supplies both standard and ProMotion OLED panels",
+          "what_they_supply": "Flexible OLED display panels",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "LG Display",
+          "short_name": "LG Display",
+          "supplier_id": "lg_display",
+          "country": "South Korea",
+          "headquarters_city": "Seoul",
+          "publicly_traded": true,
+          "ticker": "LPL",
+          "exchange": "NYSE",
+          "role": "Secondary supplier of OLED panels for iPhone",
+          "what_they_supply": "Flexible OLED display panels",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "BOE Technology Group",
+          "short_name": "BOE",
+          "supplier_id": "boe_technology",
+          "country": "China",
+          "headquarters_city": "Beijing",
+          "publicly_traded": true,
+          "ticker": "000725.SZ",
+          "exchange": "SZSE",
+          "role": "Tertiary supplier of OLED panels; primarily for base iPhone models",
+          "what_they_supply": "Flexible OLED display panels",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "Corning",
+          "short_name": "Corning",
+          "supplier_id": "corning",
+          "country": "United States",
+          "headquarters_city": "Corning, NY",
+          "publicly_traded": true,
+          "ticker": "GLW",
+          "exchange": "NYSE",
+          "role": "Supplies Ceramic Shield and Gorilla Glass for display cover glass",
+          "what_they_supply": "Aluminosilicate cover glass (Ceramic Shield)",
+          "supplies_to": ["samsung_display", "lg_display", "boe_technology"],
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Nitto Denko",
+          "short_name": "Nitto Denko",
+          "supplier_id": "nitto_denko",
+          "country": "Japan",
+          "headquarters_city": "Osaka",
+          "publicly_traded": true,
+          "ticker": "6988.T",
+          "exchange": "TSE",
+          "role": "Supplies optical films and polarizers used in OLED panel construction",
+          "what_they_supply": "Optical films, polarizers, adhesive films",
+          "supplies_to": ["samsung_display", "lg_display"],
+          "relationship_confidence": "strong_indication"
+        },
+        {
+          "company_name": "Universal Display Corporation",
+          "short_name": "UDC",
+          "supplier_id": "universal_display",
+          "country": "United States",
+          "headquarters_city": "Ewing, NJ",
+          "publicly_traded": true,
+          "ticker": "OLED",
+          "exchange": "NASDAQ",
+          "role": "Licenses phosphorescent OLED (PHOLED) materials and technology to panel makers",
+          "what_they_supply": "Phosphorescent OLED emitter materials and technology licenses",
+          "supplies_to": ["samsung_display", "lg_display"],
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Merck KGaA",
+          "short_name": "Merck KGaA",
+          "supplier_id": "merck_kgaa",
+          "country": "Germany",
+          "headquarters_city": "Darmstadt",
+          "publicly_traded": true,
+          "ticker": "MRK.DE",
+          "exchange": "XETRA",
+          "role": "Supplies organic light-emitting materials and liquid crystals for OLED displays",
+          "what_they_supply": "OLED organic emitter materials",
+          "supplies_to": ["samsung_display", "lg_display"],
+          "relationship_confidence": "strong_indication"
+        },
+        {
+          "company_name": "Sumitomo Chemical",
+          "short_name": "Sumitomo Chemical",
+          "supplier_id": "sumitomo_chemical",
+          "country": "Japan",
+          "headquarters_city": "Tokyo",
+          "publicly_traded": true,
+          "ticker": "4005.T",
+          "exchange": "TSE",
+          "role": "Supplies polarizing films and OLED functional materials",
+          "what_they_supply": "Polarizer films, OLED materials",
+          "supplies_to": ["samsung_display", "lg_display"],
+          "relationship_confidence": "strong_indication"
+        }
+      ]
+    },
+    {
+      "component_id": "camera_image_sensor",
+      "component_name": "Camera Image Sensor (CMOS)",
+      "category": "Semiconductor",
+      "description": "Stacked backside-illuminated (BSI) CMOS image sensors. Primary camera uses a large-format sensor on Pro models. Sony is the dominant supplier.",
+      "apple_part_numbers": [
+        "48MP main sensor (iPhone 15/15 Plus)",
+        "48MP main + 12MP ultrawide + 12MP 3x/5x tele (iPhone 15 Pro/Pro Max)",
+        "48MP main + 12MP ultrawide + 12MP 2x/5x tele (iPhone 16/16 Pro series)"
+      ],
+      "direct_suppliers": [
+        {
+          "company_name": "Sony Semiconductor Solutions",
+          "short_name": "Sony Semiconductor",
+          "supplier_id": "sony_semiconductor",
+          "country": "Japan",
+          "headquarters_city": "Atsugi, Kanagawa",
+          "publicly_traded": false,
+          "ticker": null,
+          "exchange": null,
+          "role": "Primary supplier of stacked BSI CMOS image sensors for all cameras",
+          "what_they_supply": "CMOS image sensors (Exmor RS stacked BSI)",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "Taiwan Semiconductor Manufacturing Company",
+          "short_name": "TSMC",
+          "supplier_id": "tsmc",
+          "country": "Taiwan",
+          "headquarters_city": "Hsinchu",
+          "publicly_traded": true,
+          "ticker": "TSM",
+          "exchange": "NYSE",
+          "role": "Fabricates logic tier of Sony's stacked image sensors when Sony outsources wafer capacity",
+          "what_they_supply": "Logic wafer fabrication for stacked sensor architecture",
+          "supplies_to": ["sony_semiconductor"],
+          "relationship_confidence": "strong_indication"
+        },
+        {
+          "company_name": "Shin-Etsu Chemical",
+          "short_name": "Shin-Etsu",
+          "supplier_id": "shin_etsu",
+          "country": "Japan",
+          "headquarters_city": "Tokyo",
+          "publicly_traded": true,
+          "ticker": "4063.T",
+          "exchange": "TSE",
+          "role": "Supplies silicon wafers to Sony Semiconductor fabs",
+          "what_they_supply": "300mm prime silicon wafers",
+          "supplies_to": ["sony_semiconductor"],
+          "relationship_confidence": "inferred"
+        }
+      ]
+    },
+    {
+      "component_id": "camera_lenses",
+      "component_name": "Camera Lens Assembly",
+      "category": "Optics",
+      "description": "Precision plastic aspheric lens elements grouped into lens assemblies for main, ultrawide, and telephoto cameras. Largan Precision is the dominant supplier.",
+      "direct_suppliers": [
+        {
+          "company_name": "Largan Precision",
+          "short_name": "Largan",
+          "supplier_id": "largan_precision",
+          "country": "Taiwan",
+          "headquarters_city": "Taichung",
+          "publicly_traded": true,
+          "ticker": "3008.TW",
+          "exchange": "TWSE",
+          "role": "Dominant supplier of precision plastic aspheric lenses (~70-80% share of Apple camera lenses)",
+          "what_they_supply": "Precision plastic aspheric lens elements and assemblies",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Genius Electronic Optical",
+          "short_name": "GSEO",
+          "supplier_id": "genius_optical",
+          "country": "Taiwan",
+          "headquarters_city": "Zhongli, Taoyuan",
+          "publicly_traded": true,
+          "ticker": "3406.TW",
+          "exchange": "TWSE",
+          "role": "Secondary supplier of camera lens assemblies",
+          "what_they_supply": "Precision plastic aspheric lenses",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "Zeon Corporation",
+          "short_name": "Zeon",
+          "supplier_id": "zeon_corporation",
+          "country": "Japan",
+          "headquarters_city": "Tokyo",
+          "publicly_traded": true,
+          "ticker": "4205.T",
+          "exchange": "TSE",
+          "role": "Supplies cyclo-olefin polymer (COP/COC) resins used to mold precision optical lens elements",
+          "what_they_supply": "Cyclo-olefin polymer optical resins",
+          "supplies_to": ["largan_precision", "genius_optical"],
+          "relationship_confidence": "strong_indication"
+        },
+        {
+          "company_name": "Mitsui Chemicals",
+          "short_name": "Mitsui Chemicals",
+          "supplier_id": "mitsui_chemicals",
+          "country": "Japan",
+          "headquarters_city": "Tokyo",
+          "publicly_traded": true,
+          "ticker": "4183.T",
+          "exchange": "TSE",
+          "role": "Supplies specialty optical-grade plastic resins for lens molding",
+          "what_they_supply": "Optical-grade plastic resins",
+          "supplies_to": ["largan_precision"],
+          "relationship_confidence": "inferred"
+        }
+      ]
+    },
+    {
+      "component_id": "camera_modules",
+      "component_name": "Camera Module",
+      "category": "Optics",
+      "description": "Complete camera modules integrating image sensor, lens assembly, OIS actuator, and autofocus mechanism. LG Innotek is the primary supplier for high-end modules.",
+      "direct_suppliers": [
+        {
+          "company_name": "LG Innotek",
+          "short_name": "LG Innotek",
+          "supplier_id": "lg_innotek",
+          "country": "South Korea",
+          "headquarters_city": "Seoul",
+          "publicly_traded": true,
+          "ticker": "011070.KS",
+          "exchange": "KRX",
+          "role": "Primary supplier of complete camera modules including periscope telephoto for Pro models",
+          "what_they_supply": "Complete camera modules (main, ultra-wide, periscope tele)",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Cowell E Holdings",
+          "short_name": "Cowell",
+          "supplier_id": "cowell",
+          "country": "Hong Kong",
+          "headquarters_city": "Hong Kong",
+          "publicly_traded": true,
+          "ticker": "1415.HK",
+          "exchange": "HKEX",
+          "role": "Secondary supplier of camera modules for standard iPhone models",
+          "what_they_supply": "Camera modules",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "Largan Precision",
+          "short_name": "Largan",
+          "supplier_id": "largan_precision",
+          "country": "Taiwan",
+          "headquarters_city": "Taichung",
+          "publicly_traded": true,
+          "ticker": "3008.TW",
+          "exchange": "TWSE",
+          "role": "Supplies lens assemblies integrated into camera modules",
+          "what_they_supply": "Lens assemblies",
+          "supplies_to": ["lg_innotek", "cowell"],
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Sony Semiconductor Solutions",
+          "short_name": "Sony Semiconductor",
+          "supplier_id": "sony_semiconductor",
+          "country": "Japan",
+          "headquarters_city": "Atsugi, Kanagawa",
+          "publicly_traded": false,
+          "ticker": null,
+          "exchange": null,
+          "role": "Supplies CMOS image sensors integrated into camera modules",
+          "what_they_supply": "CMOS image sensors",
+          "supplies_to": ["lg_innotek", "cowell"],
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Alps Alpine",
+          "short_name": "Alps Alpine",
+          "supplier_id": "alps_alpine",
+          "country": "Japan",
+          "headquarters_city": "Tokyo",
+          "publicly_traded": true,
+          "ticker": "6770.T",
+          "exchange": "TSE",
+          "role": "Supplies voice coil motor (VCM) actuators for autofocus and OIS mechanisms",
+          "what_they_supply": "Voice coil motor (VCM) actuators for autofocus and OIS",
+          "supplies_to": ["lg_innotek"],
+          "relationship_confidence": "strong_indication"
+        },
+        {
+          "company_name": "Mitsumi Electric",
+          "short_name": "Mitsumi",
+          "supplier_id": "mitsumi_electric",
+          "country": "Japan",
+          "headquarters_city": "Tokyo",
+          "publicly_traded": false,
+          "ticker": null,
+          "exchange": null,
+          "role": "Subsidiary of Mitsumi Electric (acquired by Minebea Mitsumi); supplies actuator components for OIS",
+          "what_they_supply": "OIS and autofocus actuator components",
+          "supplies_to": ["lg_innotek"],
+          "relationship_confidence": "strong_indication"
+        }
+      ]
+    },
+    {
+      "component_id": "battery",
+      "component_name": "Lithium-Ion Battery",
+      "category": "Power",
+      "description": "Custom-shaped lithium-ion polymer battery packs. ATL is the primary supplier. Battery life is a key spec differentiator across iPhone generations.",
+      "direct_suppliers": [
+        {
+          "company_name": "Amperex Technology Limited",
+          "short_name": "ATL",
+          "supplier_id": "atl",
+          "country": "China",
+          "headquarters_city": "Ningde, Fujian",
+          "publicly_traded": false,
+          "ticker": null,
+          "exchange": null,
+          "role": "Primary supplier of lithium-ion polymer battery cells and assembled packs; subsidiary of TDK",
+          "what_they_supply": "Lithium-ion polymer battery packs",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Sunwoda Electronic",
+          "short_name": "Sunwoda",
+          "supplier_id": "sunwoda",
+          "country": "China",
+          "headquarters_city": "Shenzhen",
+          "publicly_traded": true,
+          "ticker": "300207.SZ",
+          "exchange": "SZSE",
+          "role": "Secondary supplier of lithium-ion battery packs",
+          "what_they_supply": "Lithium-ion polymer battery packs",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "BYD",
+          "short_name": "BYD",
+          "supplier_id": "byd",
+          "country": "China",
+          "headquarters_city": "Shenzhen",
+          "publicly_traded": true,
+          "ticker": "002594.SZ",
+          "exchange": "SZSE",
+          "role": "Tertiary battery supplier for some iPhone models",
+          "what_they_supply": "Lithium-ion battery cells",
+          "relationship_confidence": "strong_indication"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "TDK Corporation",
+          "short_name": "TDK",
+          "supplier_id": "tdk",
+          "country": "Japan",
+          "headquarters_city": "Tokyo",
+          "publicly_traded": true,
+          "ticker": "6762.T",
+          "exchange": "TSE",
+          "role": "Parent company of ATL; provides technical oversight and some material inputs",
+          "what_they_supply": "Battery materials and technology via ATL ownership",
+          "supplies_to": ["atl"],
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Ganfeng Lithium",
+          "short_name": "Ganfeng Lithium",
+          "supplier_id": "ganfeng_lithium",
+          "country": "China",
+          "headquarters_city": "Xinyu, Jiangxi",
+          "publicly_traded": true,
+          "ticker": "1772.HK",
+          "exchange": "HKEX",
+          "role": "Supplies lithium hydroxide and lithium carbonate used in cathode active materials",
+          "what_they_supply": "Lithium hydroxide and lithium carbonate (cathode precursor)",
+          "supplies_to": ["atl", "sunwoda"],
+          "relationship_confidence": "strong_indication"
+        },
+        {
+          "company_name": "Albemarle Corporation",
+          "short_name": "Albemarle",
+          "supplier_id": "albemarle",
+          "country": "United States",
+          "headquarters_city": "Charlotte, NC",
+          "publicly_traded": true,
+          "ticker": "ALB",
+          "exchange": "NYSE",
+          "role": "Global lithium producer; supplies lithium compounds for battery cathode materials",
+          "what_they_supply": "Lithium compounds (battery-grade lithium hydroxide)",
+          "supplies_to": ["atl", "sunwoda"],
+          "relationship_confidence": "strong_indication"
+        },
+        {
+          "company_name": "Umicore",
+          "short_name": "Umicore",
+          "supplier_id": "umicore",
+          "country": "Belgium",
+          "headquarters_city": "Brussels",
+          "publicly_traded": true,
+          "ticker": "UMI.BR",
+          "exchange": "Euronext Brussels",
+          "role": "Supplies cathode active materials (NMC) for lithium-ion batteries",
+          "what_they_supply": "NMC cathode active materials",
+          "supplies_to": ["atl"],
+          "relationship_confidence": "strong_indication"
+        },
+        {
+          "company_name": "Asahi Kasei",
+          "short_name": "Asahi Kasei",
+          "supplier_id": "asahi_kasei",
+          "country": "Japan",
+          "headquarters_city": "Tokyo",
+          "publicly_traded": true,
+          "ticker": "3407.T",
+          "exchange": "TSE",
+          "role": "Manufactures battery separator films via its Celgard subsidiary",
+          "what_they_supply": "Lithium-ion battery separator films (via Celgard)",
+          "supplies_to": ["atl", "sunwoda"],
+          "relationship_confidence": "strong_indication"
+        }
+      ]
+    },
+    {
+      "component_id": "nand_flash",
+      "component_name": "NAND Flash Storage",
+      "category": "Storage",
+      "description": "3D NAND flash memory for iPhone internal storage (128GB to 1TB options). Multiple suppliers used across product lines.",
+      "direct_suppliers": [
+        {
+          "company_name": "Kioxia Holdings",
+          "short_name": "Kioxia",
+          "supplier_id": "kioxia",
+          "country": "Japan",
+          "headquarters_city": "Minato, Tokyo",
+          "publicly_traded": true,
+          "ticker": "285A.T",
+          "exchange": "TSE",
+          "role": "Primary NAND flash supplier; formerly Toshiba Memory; supplies 3D NAND (BiCS FLASH)",
+          "what_they_supply": "3D NAND flash memory chips",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "SK Hynix",
+          "short_name": "SK Hynix",
+          "supplier_id": "sk_hynix",
+          "country": "South Korea",
+          "headquarters_city": "Icheon, Gyeonggi-do",
+          "publicly_traded": true,
+          "ticker": "000660.KS",
+          "exchange": "KRX",
+          "role": "Secondary NAND flash supplier",
+          "what_they_supply": "3D NAND flash memory chips",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Samsung Electronics",
+          "short_name": "Samsung",
+          "supplier_id": "samsung_electronics",
+          "country": "South Korea",
+          "headquarters_city": "Suwon, Gyeonggi-do",
+          "publicly_traded": true,
+          "ticker": "005930.KS",
+          "exchange": "KRX",
+          "role": "Tertiary NAND flash supplier (V-NAND)",
+          "what_they_supply": "3D NAND flash memory chips (V-NAND)",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "ASML Holding",
+          "short_name": "ASML",
+          "supplier_id": "asml",
+          "country": "Netherlands",
+          "headquarters_city": "Veldhoven",
+          "publicly_traded": true,
+          "ticker": "ASML",
+          "exchange": "NASDAQ",
+          "role": "Supplies DUV/EUV lithography equipment to all NAND fabs for patterning",
+          "what_they_supply": "DUV and EUV lithography equipment",
+          "supplies_to": ["kioxia", "sk_hynix", "samsung_electronics"],
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Lam Research",
+          "short_name": "Lam Research",
+          "supplier_id": "lam_research",
+          "country": "United States",
+          "headquarters_city": "Fremont, CA",
+          "publicly_traded": true,
+          "ticker": "LRCX",
+          "exchange": "NASDAQ",
+          "role": "Supplies etch equipment critical for high-aspect-ratio 3D NAND channel hole etching",
+          "what_they_supply": "High-aspect-ratio etch equipment for 3D NAND",
+          "supplies_to": ["kioxia", "sk_hynix", "samsung_electronics"],
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Western Digital",
+          "short_name": "Western Digital",
+          "supplier_id": "western_digital",
+          "country": "United States",
+          "headquarters_city": "San Jose, CA",
+          "publicly_traded": true,
+          "ticker": "WDC",
+          "exchange": "NASDAQ",
+          "role": "Joint venture partner with Kioxia; co-develops and co-manufactures NAND flash at shared fabs in Japan",
+          "what_they_supply": "Co-manufacturing via Kioxia JV (shared fab capacity)",
+          "supplies_to": ["kioxia"],
+          "relationship_confidence": "confirmed"
+        }
+      ]
+    },
+    {
+      "component_id": "dram",
+      "component_name": "DRAM / RAM",
+      "category": "Semiconductor",
+      "description": "Low-power DRAM (LPDDR5/LPDDR5X) packaged as part of the PoP (Package-on-Package) or integrated into the SoC package. All iPhone 15/16 series use 6-8GB RAM.",
+      "direct_suppliers": [
+        {
+          "company_name": "SK Hynix",
+          "short_name": "SK Hynix",
+          "supplier_id": "sk_hynix",
+          "country": "South Korea",
+          "headquarters_city": "Icheon, Gyeonggi-do",
+          "publicly_traded": true,
+          "ticker": "000660.KS",
+          "exchange": "KRX",
+          "role": "Primary LPDDR5/LPDDR5X DRAM supplier for iPhone",
+          "what_they_supply": "LPDDR5 / LPDDR5X mobile DRAM",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Samsung Electronics",
+          "short_name": "Samsung",
+          "supplier_id": "samsung_electronics",
+          "country": "South Korea",
+          "headquarters_city": "Suwon, Gyeonggi-do",
+          "publicly_traded": true,
+          "ticker": "005930.KS",
+          "exchange": "KRX",
+          "role": "Secondary LPDDR5 DRAM supplier",
+          "what_they_supply": "LPDDR5 mobile DRAM",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Micron Technology",
+          "short_name": "Micron",
+          "supplier_id": "micron",
+          "country": "United States",
+          "headquarters_city": "Boise, ID",
+          "publicly_traded": true,
+          "ticker": "MU",
+          "exchange": "NASDAQ",
+          "role": "Tertiary LPDDR5 DRAM supplier",
+          "what_they_supply": "LPDDR5 mobile DRAM",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "ASML Holding",
+          "short_name": "ASML",
+          "supplier_id": "asml",
+          "country": "Netherlands",
+          "headquarters_city": "Veldhoven",
+          "publicly_traded": true,
+          "ticker": "ASML",
+          "exchange": "NASDAQ",
+          "role": "Supplies EUV lithography equipment used in advanced DRAM node production",
+          "what_they_supply": "EUV/DUV lithography equipment",
+          "supplies_to": ["sk_hynix", "samsung_electronics", "micron"],
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Entegris",
+          "short_name": "Entegris",
+          "supplier_id": "entegris",
+          "country": "United States",
+          "headquarters_city": "Billerica, MA",
+          "publicly_traded": true,
+          "ticker": "ENTG",
+          "exchange": "NASDAQ",
+          "role": "Supplies specialty chemicals, filtration, and materials management systems for DRAM fabs",
+          "what_they_supply": "Specialty chemicals, filtration systems, and contamination control materials",
+          "supplies_to": ["sk_hynix", "micron"],
+          "relationship_confidence": "confirmed"
+        }
+      ]
+    },
+    {
+      "component_id": "modem_baseband",
+      "component_name": "Cellular Modem / Baseband",
+      "category": "Semiconductor",
+      "description": "5G modem handling cellular connectivity. Qualcomm supplies the primary modem for iPhone 15/16. Apple's in-house C1 modem debuted in iPhone 16e (2025) and is expected to gradually replace Qualcomm.",
+      "direct_suppliers": [
+        {
+          "company_name": "Qualcomm",
+          "short_name": "Qualcomm",
+          "supplier_id": "qualcomm",
+          "country": "United States",
+          "headquarters_city": "San Diego, CA",
+          "publicly_traded": true,
+          "ticker": "QCOM",
+          "exchange": "NASDAQ",
+          "role": "Supplies Snapdragon X70/X75 5G modem-RF system for iPhone 15 and 16 series",
+          "what_they_supply": "5G modem and RF transceiver chipset",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "Taiwan Semiconductor Manufacturing Company",
+          "short_name": "TSMC",
+          "supplier_id": "tsmc",
+          "country": "Taiwan",
+          "headquarters_city": "Hsinchu",
+          "publicly_traded": true,
+          "ticker": "TSM",
+          "exchange": "NYSE",
+          "role": "Fabricates Qualcomm Snapdragon modem chips and Apple's in-house C1 modem on advanced nodes",
+          "what_they_supply": "Wafer fabrication for modem chips",
+          "supplies_to": ["qualcomm"],
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Murata Manufacturing",
+          "short_name": "Murata",
+          "supplier_id": "murata",
+          "country": "Japan",
+          "headquarters_city": "Nagaokakyo, Kyoto",
+          "publicly_traded": true,
+          "ticker": "6981.T",
+          "exchange": "TSE",
+          "role": "Supplies RF modules and passive components that accompany the modem chipset",
+          "what_they_supply": "RF modules, SAW/BAW filters, and passive components",
+          "supplies_to": ["qualcomm"],
+          "relationship_confidence": "strong_indication"
+        }
+      ],
+      "notes": "Apple's in-house C1 modem (fabbed by TSMC) debuted in iPhone 16e in 2025. Apple is expected to phase out Qualcomm modems gradually across the iPhone line."
+    },
+    {
+      "component_id": "wifi_bluetooth",
+      "component_name": "Wi-Fi / Bluetooth / UWB Chipset",
+      "category": "Semiconductor",
+      "description": "Combo chip handling Wi-Fi 6E/7, Bluetooth 5.3, and Ultra Wideband (UWB). Apple has been developing in-house wireless chips (W-series, U1/U2) while also using Broadcom for Wi-Fi/BT.",
+      "direct_suppliers": [
+        {
+          "company_name": "Broadcom",
+          "short_name": "Broadcom",
+          "supplier_id": "broadcom",
+          "country": "United States",
+          "headquarters_city": "San Jose, CA",
+          "publicly_traded": true,
+          "ticker": "AVGO",
+          "exchange": "NASDAQ",
+          "role": "Supplies Wi-Fi / Bluetooth combo chips integrated in iPhone; major Apple revenue contributor",
+          "what_they_supply": "Wi-Fi 6E and Bluetooth combo chipset",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Murata Manufacturing",
+          "short_name": "Murata",
+          "supplier_id": "murata",
+          "country": "Japan",
+          "headquarters_city": "Nagaokakyo, Kyoto",
+          "publicly_traded": true,
+          "ticker": "6981.T",
+          "exchange": "TSE",
+          "role": "Packages Wi-Fi/BT chips into RF modules; supplies Wi-Fi front-end modules",
+          "what_they_supply": "Wi-Fi front-end modules and packaging",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "Taiwan Semiconductor Manufacturing Company",
+          "short_name": "TSMC",
+          "supplier_id": "tsmc",
+          "country": "Taiwan",
+          "headquarters_city": "Hsinchu",
+          "publicly_traded": true,
+          "ticker": "TSM",
+          "exchange": "NYSE",
+          "role": "Fabricates Broadcom Wi-Fi/BT chips and Apple's W-series/U-series wireless chips",
+          "what_they_supply": "Wafer fabrication for wireless chips",
+          "supplies_to": ["broadcom"],
+          "relationship_confidence": "confirmed"
+        }
+      ]
+    },
+    {
+      "component_id": "rf_front_end",
+      "component_name": "RF Front End (Cellular PA/Filters)",
+      "category": "RF",
+      "description": "Power amplifiers, band-pass filters (SAW/BAW), switches, and antenna tuning modules that condition RF signals for cellular transmission and reception across sub-6GHz and mmWave bands.",
+      "direct_suppliers": [
+        {
+          "company_name": "Skyworks Solutions",
+          "short_name": "Skyworks",
+          "supplier_id": "skyworks",
+          "country": "United States",
+          "headquarters_city": "Irvine, CA",
+          "publicly_traded": true,
+          "ticker": "SWKS",
+          "exchange": "NASDAQ",
+          "role": "Primary supplier of power amplifier modules and RF switches for cellular bands",
+          "what_they_supply": "RF power amplifier modules, antenna switches",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Qorvo",
+          "short_name": "Qorvo",
+          "supplier_id": "qorvo",
+          "country": "United States",
+          "headquarters_city": "Greensboro, NC",
+          "publicly_traded": true,
+          "ticker": "QRVO",
+          "exchange": "NASDAQ",
+          "role": "Secondary supplier of power amplifiers, BAW filters, and antenna tuning modules",
+          "what_they_supply": "RF power amplifiers, BAW filters, antenna tuning modules",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Murata Manufacturing",
+          "short_name": "Murata",
+          "supplier_id": "murata",
+          "country": "Japan",
+          "headquarters_city": "Nagaokakyo, Kyoto",
+          "publicly_traded": true,
+          "ticker": "6981.T",
+          "exchange": "TSE",
+          "role": "Supplies SAW and BAW filters, RF modules for cellular front end",
+          "what_they_supply": "SAW/BAW RF filters and front-end modules",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "WIN Semiconductors",
+          "short_name": "WIN Semi",
+          "supplier_id": "win_semiconductors",
+          "country": "Taiwan",
+          "headquarters_city": "Taoyuan",
+          "publicly_traded": true,
+          "ticker": "3105.TW",
+          "exchange": "TWSE",
+          "role": "GaAs compound semiconductor foundry; fabricates power amplifier wafers for Skyworks and Qorvo",
+          "what_they_supply": "GaAs and GaN wafer fabrication for RF power amplifiers",
+          "supplies_to": ["skyworks", "qorvo"],
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Sumitomo Electric Industries",
+          "short_name": "Sumitomo Electric",
+          "supplier_id": "sumitomo_electric",
+          "country": "Japan",
+          "headquarters_city": "Osaka",
+          "publicly_traded": true,
+          "ticker": "5802.T",
+          "exchange": "TSE",
+          "role": "Supplies GaAs epitaxial wafers to compound semiconductor foundries",
+          "what_they_supply": "GaAs epitaxial wafers",
+          "supplies_to": ["win_semiconductors"],
+          "relationship_confidence": "strong_indication"
+        },
+        {
+          "company_name": "TDK Corporation",
+          "short_name": "TDK",
+          "supplier_id": "tdk",
+          "country": "Japan",
+          "headquarters_city": "Tokyo",
+          "publicly_traded": true,
+          "ticker": "6762.T",
+          "exchange": "TSE",
+          "role": "Supplies thin-film BAW filter technology components and passive components for RF front end",
+          "what_they_supply": "BAW filter components and RF passive components",
+          "supplies_to": ["murata", "qorvo"],
+          "relationship_confidence": "strong_indication"
+        }
+      ]
+    },
+    {
+      "component_id": "power_management_ic",
+      "component_name": "Power Management IC (PMIC)",
+      "category": "Semiconductor",
+      "description": "Controls power delivery to all iPhone subsystems, manages battery charging, and regulates voltages. Apple has been developing in-house PMICs fabricated by TSMC.",
+      "direct_suppliers": [
+        {
+          "company_name": "Renesas Electronics",
+          "short_name": "Renesas",
+          "supplier_id": "renesas",
+          "country": "Japan",
+          "headquarters_city": "Tokyo",
+          "publicly_traded": true,
+          "ticker": "6723.T",
+          "exchange": "TSE",
+          "role": "Supplies main PMIC via its Dialog Semiconductor subsidiary (acquired 2021)",
+          "what_they_supply": "Power management ICs (via Dialog Semiconductor brand)",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Texas Instruments",
+          "short_name": "TI",
+          "supplier_id": "texas_instruments",
+          "country": "United States",
+          "headquarters_city": "Dallas, TX",
+          "publicly_traded": true,
+          "ticker": "TXN",
+          "exchange": "NASDAQ",
+          "role": "Supplies battery charging management ICs and secondary power management functions",
+          "what_they_supply": "Battery charger ICs and DC-DC converter ICs",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "Taiwan Semiconductor Manufacturing Company",
+          "short_name": "TSMC",
+          "supplier_id": "tsmc",
+          "country": "Taiwan",
+          "headquarters_city": "Hsinchu",
+          "publicly_traded": true,
+          "ticker": "TSM",
+          "exchange": "NYSE",
+          "role": "Fabricates Apple-designed in-house PMIC chips and Dialog PMIC chips on advanced nodes",
+          "what_they_supply": "Wafer fabrication for PMIC chips",
+          "supplies_to": ["renesas"],
+          "relationship_confidence": "strong_indication"
+        },
+        {
+          "company_name": "GlobalFoundries",
+          "short_name": "GlobalFoundries",
+          "supplier_id": "globalfoundries",
+          "country": "United States",
+          "headquarters_city": "Malta, NY",
+          "publicly_traded": true,
+          "ticker": "GFS",
+          "exchange": "NASDAQ",
+          "role": "Alternative foundry used by Texas Instruments for some PMIC products",
+          "what_they_supply": "Wafer fabrication for mixed-signal ICs",
+          "supplies_to": ["texas_instruments"],
+          "relationship_confidence": "inferred"
+        }
+      ]
+    },
+    {
+      "component_id": "face_id_truedepth",
+      "component_name": "Face ID / TrueDepth Camera System",
+      "category": "Sensor",
+      "description": "The TrueDepth camera system projects 30,000+ infrared dots via a dot projector VCSEL, reads the pattern with an infrared camera, and uses a flood illuminator for low-light. Enables Face ID biometric authentication and Animoji.",
+      "direct_suppliers": [
+        {
+          "company_name": "Lumentum Holdings",
+          "short_name": "Lumentum",
+          "supplier_id": "lumentum",
+          "country": "United States",
+          "headquarters_city": "San Jose, CA",
+          "publicly_traded": true,
+          "ticker": "LITE",
+          "exchange": "NASDAQ",
+          "role": "Primary supplier of VCSEL arrays for the dot projector in Face ID",
+          "what_they_supply": "VCSEL (Vertical-Cavity Surface-Emitting Laser) arrays",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Coherent Corp (formerly II-VI)",
+          "short_name": "Coherent",
+          "supplier_id": "coherent",
+          "country": "United States",
+          "headquarters_city": "Pittsburgh, PA",
+          "publicly_traded": true,
+          "ticker": "COHR",
+          "exchange": "NYSE",
+          "role": "Secondary supplier of VCSEL arrays for Face ID dot projector",
+          "what_they_supply": "VCSEL arrays (via former II-VI Incorporated)",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "ams OSRAM",
+          "short_name": "ams OSRAM",
+          "supplier_id": "ams_osram",
+          "country": "Austria",
+          "headquarters_city": "Premstaetten, Styria",
+          "publicly_traded": true,
+          "ticker": "AMS.SW",
+          "exchange": "SIX Swiss Exchange",
+          "role": "Supplies flood illuminator (IR LED), proximity sensor, and ambient light sensor in TrueDepth module",
+          "what_they_supply": "IR flood illuminator LEDs, proximity sensors",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "IQE",
+          "short_name": "IQE",
+          "supplier_id": "iqe",
+          "country": "United Kingdom",
+          "headquarters_city": "Cardiff, Wales",
+          "publicly_traded": true,
+          "ticker": "IQE.L",
+          "exchange": "LSE AIM",
+          "role": "Supplies compound semiconductor (GaAs/InGaP) epitaxial wafers used to produce VCSELs",
+          "what_they_supply": "Compound semiconductor epitaxial wafers for VCSEL production",
+          "supplies_to": ["lumentum", "coherent"],
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Sony Semiconductor Solutions",
+          "short_name": "Sony Semiconductor",
+          "supplier_id": "sony_semiconductor",
+          "country": "Japan",
+          "headquarters_city": "Atsugi, Kanagawa",
+          "publicly_traded": false,
+          "ticker": null,
+          "exchange": null,
+          "role": "Supplies the infrared image sensor used in the TrueDepth camera for Face ID",
+          "what_they_supply": "Infrared CMOS image sensor",
+          "supplies_to": ["lumentum"],
+          "relationship_confidence": "strong_indication"
+        }
+      ]
+    },
+    {
+      "component_id": "audio",
+      "component_name": "Audio System (DAC/Amp, Speakers, Microphones)",
+      "category": "Audio",
+      "description": "Comprises an audio codec/DAC-amp IC (Cirrus Logic), micro-speakers for earpiece and bottom-firing speaker (AAC Technologies), and MEMS microphones (Knowles, GoerTek).",
+      "direct_suppliers": [
+        {
+          "company_name": "Cirrus Logic",
+          "short_name": "Cirrus Logic",
+          "supplier_id": "cirrus_logic",
+          "country": "United States",
+          "headquarters_city": "Austin, TX",
+          "publicly_traded": true,
+          "ticker": "CRUS",
+          "exchange": "NASDAQ",
+          "role": "Supplies audio codec and DAC/amplifier chips; Apple represents ~80% of Cirrus Logic revenue",
+          "what_they_supply": "Audio codec, DAC, and amplifier ICs",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "AAC Technologies",
+          "short_name": "AAC Technologies",
+          "supplier_id": "aac_technologies",
+          "country": "China",
+          "headquarters_city": "Shenzhen",
+          "publicly_traded": true,
+          "ticker": "2018.HK",
+          "exchange": "HKEX",
+          "role": "Supplies micro-speakers (earpiece receiver and bottom-firing speaker)",
+          "what_they_supply": "Micro-speakers and acoustic transducers",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Knowles Corporation",
+          "short_name": "Knowles",
+          "supplier_id": "knowles",
+          "country": "United States",
+          "headquarters_city": "Itasca, IL",
+          "publicly_traded": true,
+          "ticker": "KN",
+          "exchange": "NYSE",
+          "role": "Primary supplier of MEMS microphones for iPhone",
+          "what_they_supply": "MEMS microphones",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "GoerTek",
+          "short_name": "GoerTek",
+          "supplier_id": "goertek",
+          "country": "China",
+          "headquarters_city": "Weifang, Shandong",
+          "publicly_traded": true,
+          "ticker": "002241.SZ",
+          "exchange": "SZSE",
+          "role": "Secondary supplier of MEMS microphones and acoustic components",
+          "what_they_supply": "MEMS microphones and acoustic modules",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "Taiwan Semiconductor Manufacturing Company",
+          "short_name": "TSMC",
+          "supplier_id": "tsmc",
+          "country": "Taiwan",
+          "headquarters_city": "Hsinchu",
+          "publicly_traded": true,
+          "ticker": "TSM",
+          "exchange": "NYSE",
+          "role": "Fabricates Cirrus Logic audio chips on advanced CMOS process nodes",
+          "what_they_supply": "Wafer fabrication for audio ICs",
+          "supplies_to": ["cirrus_logic"],
+          "relationship_confidence": "confirmed"
+        }
+      ]
+    },
+    {
+      "component_id": "nfc_controller",
+      "component_name": "NFC Controller",
+      "category": "Semiconductor",
+      "description": "Near-field communication controller enabling Apple Pay, transit cards, digital keys, and peer-to-peer data sharing. NXP Semiconductors is the sole confirmed supplier.",
+      "direct_suppliers": [
+        {
+          "company_name": "NXP Semiconductors",
+          "short_name": "NXP",
+          "supplier_id": "nxp",
+          "country": "Netherlands",
+          "headquarters_city": "Eindhoven",
+          "publicly_traded": true,
+          "ticker": "NXPI",
+          "exchange": "NASDAQ",
+          "role": "Sole supplier of NFC controller chip (PN series) for iPhone; also supplies Secure Element",
+          "what_they_supply": "NFC controller IC and Secure Element",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "Taiwan Semiconductor Manufacturing Company",
+          "short_name": "TSMC",
+          "supplier_id": "tsmc",
+          "country": "Taiwan",
+          "headquarters_city": "Hsinchu",
+          "publicly_traded": true,
+          "ticker": "TSM",
+          "exchange": "NYSE",
+          "role": "Fabricates NXP's NFC controller chips",
+          "what_they_supply": "Wafer fabrication for NFC chips",
+          "supplies_to": ["nxp"],
+          "relationship_confidence": "strong_indication"
+        },
+        {
+          "company_name": "Samsung Foundry",
+          "short_name": "Samsung Foundry",
+          "supplier_id": "samsung_foundry",
+          "country": "South Korea",
+          "headquarters_city": "Hwaseong, Gyeonggi-do",
+          "publicly_traded": false,
+          "ticker": null,
+          "exchange": null,
+          "role": "Secondary foundry used by NXP for some chip variants",
+          "what_they_supply": "Wafer fabrication services",
+          "supplies_to": ["nxp"],
+          "relationship_confidence": "inferred"
+        }
+      ]
+    },
+    {
+      "component_id": "motion_sensors",
+      "component_name": "Motion Sensors (Accelerometer, Gyroscope, Barometer)",
+      "category": "Sensor",
+      "description": "MEMS-based inertial sensors enabling step counting, screen rotation, gaming, and Crash Detection. Barometer enables elevation tracking and emergency features.",
+      "direct_suppliers": [
+        {
+          "company_name": "STMicroelectronics",
+          "short_name": "STMicro",
+          "supplier_id": "stmicroelectronics",
+          "country": "Switzerland / Italy",
+          "headquarters_city": "Geneva (HQ) / Agrate Brianza",
+          "publicly_traded": true,
+          "ticker": "STM",
+          "exchange": "NYSE",
+          "role": "Supplies 6-axis IMU (3-axis accelerometer + 3-axis gyroscope) and barometric pressure sensor",
+          "what_they_supply": "MEMS IMU (accelerometer + gyroscope) and barometer",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "TDK / InvenSense",
+          "short_name": "InvenSense",
+          "supplier_id": "invensense",
+          "country": "Japan / United States",
+          "headquarters_city": "Tokyo (TDK) / San Jose (InvenSense)",
+          "publicly_traded": false,
+          "ticker": null,
+          "exchange": null,
+          "role": "Supplies gyroscope and possibly barometer (InvenSense acquired by TDK in 2017; confirmed Apple Supplier)",
+          "what_they_supply": "MEMS gyroscope",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "Applied Materials",
+          "short_name": "Applied Materials",
+          "supplier_id": "applied_materials",
+          "country": "United States",
+          "headquarters_city": "Santa Clara, CA",
+          "publicly_traded": true,
+          "ticker": "AMAT",
+          "exchange": "NASDAQ",
+          "role": "Supplies MEMS deposition and etch equipment to STMicroelectronics MEMS fabs",
+          "what_they_supply": "Semiconductor manufacturing equipment for MEMS fabs",
+          "supplies_to": ["stmicroelectronics"],
+          "relationship_confidence": "inferred"
+        }
+      ]
+    },
+    {
+      "component_id": "ambient_light_proximity",
+      "component_name": "Ambient Light & Proximity Sensor",
+      "category": "Sensor",
+      "description": "Ambient light sensor auto-adjusts display brightness; proximity sensor detects when the phone is held to the ear to turn off the display. Both are on the front face. ams OSRAM is the confirmed sole supplier.",
+      "direct_suppliers": [
+        {
+          "company_name": "ams OSRAM",
+          "short_name": "ams OSRAM",
+          "supplier_id": "ams_osram",
+          "country": "Austria",
+          "headquarters_city": "Premstaetten, Styria",
+          "publicly_traded": true,
+          "ticker": "AMS.SW",
+          "exchange": "SIX Swiss Exchange",
+          "role": "Supplies ambient light sensor and proximity sensor (confirmed sole supplier for multiple generations)",
+          "what_they_supply": "Ambient light sensor IC and proximity sensor (IR-based)",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "Taiwan Semiconductor Manufacturing Company",
+          "short_name": "TSMC",
+          "supplier_id": "tsmc",
+          "country": "Taiwan",
+          "headquarters_city": "Hsinchu",
+          "publicly_traded": true,
+          "ticker": "TSM",
+          "exchange": "NYSE",
+          "role": "Fabricates ams OSRAM sensor ICs on CMOS process nodes",
+          "what_they_supply": "Wafer fabrication for sensor ICs",
+          "supplies_to": ["ams_osram"],
+          "relationship_confidence": "strong_indication"
+        },
+        {
+          "company_name": "Epistar Corporation",
+          "short_name": "Epistar",
+          "supplier_id": "epistar",
+          "country": "Taiwan",
+          "headquarters_city": "Hsinchu",
+          "publicly_traded": true,
+          "ticker": "2448.TW",
+          "exchange": "TWSE",
+          "role": "Supplies IR LED emitters used in proximity sensing",
+          "what_they_supply": "IR LED emitter chips",
+          "supplies_to": ["ams_osram"],
+          "relationship_confidence": "inferred"
+        }
+      ]
+    },
+    {
+      "component_id": "haptic_engine",
+      "component_name": "Taptic Engine / Haptic Actuator",
+      "category": "Mechanical",
+      "description": "Linear resonant actuator (LRA) providing precise haptic feedback. Apple's Taptic Engine delivers fine-grained haptic patterns for notifications, keyboard typing, and UI interactions.",
+      "direct_suppliers": [
+        {
+          "company_name": "AAC Technologies",
+          "short_name": "AAC Technologies",
+          "supplier_id": "aac_technologies",
+          "country": "China",
+          "headquarters_city": "Shenzhen",
+          "publicly_traded": true,
+          "ticker": "2018.HK",
+          "exchange": "HKEX",
+          "role": "Primary supplier of linear resonant actuators (LRA) for Taptic Engine",
+          "what_they_supply": "Linear resonant actuator (LRA) components for Taptic Engine",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Nidec Corporation",
+          "short_name": "Nidec",
+          "supplier_id": "nidec",
+          "country": "Japan",
+          "headquarters_city": "Kyoto",
+          "publicly_traded": true,
+          "ticker": "6594.T",
+          "exchange": "TSE",
+          "role": "Secondary supplier of precision vibration motors and LRA actuators",
+          "what_they_supply": "Linear resonant actuator components",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "Zhongke Sanhuan",
+          "short_name": "Zhongke Sanhuan",
+          "supplier_id": "zhongke_sanhuan",
+          "country": "China",
+          "headquarters_city": "Beijing",
+          "publicly_traded": true,
+          "ticker": "000970.SZ",
+          "exchange": "SZSE",
+          "role": "Major producer of NdFeB (neodymium-iron-boron) rare earth permanent magnets used in LRA actuators",
+          "what_they_supply": "NdFeB rare earth permanent magnets",
+          "supplies_to": ["aac_technologies", "nidec"],
+          "relationship_confidence": "inferred"
+        },
+        {
+          "company_name": "MP Materials",
+          "short_name": "MP Materials",
+          "supplier_id": "mp_materials",
+          "country": "United States",
+          "headquarters_city": "Las Vegas, NV",
+          "publicly_traded": true,
+          "ticker": "MP",
+          "exchange": "NYSE",
+          "role": "US-based rare earth miner and processor; supplies neodymium and praseodymium for magnets",
+          "what_they_supply": "Rare earth materials (NdPr) for permanent magnets",
+          "supplies_to": ["zhongke_sanhuan"],
+          "relationship_confidence": "inferred"
+        }
+      ]
+    },
+    {
+      "component_id": "pcb_substrate",
+      "component_name": "Printed Circuit Board / IC Substrate",
+      "category": "Mechanical",
+      "description": "The main logic board PCB and the advanced IC package substrates (ABF substrates) that package Apple Silicon chips. High-density interconnect (HDI) PCBs are used for compact iPhone layouts.",
+      "direct_suppliers": [
+        {
+          "company_name": "Ibiden",
+          "short_name": "Ibiden",
+          "supplier_id": "ibiden",
+          "country": "Japan",
+          "headquarters_city": "Ogaki, Gifu",
+          "publicly_traded": true,
+          "ticker": "4062.T",
+          "exchange": "TSE",
+          "role": "Dominant supplier of ABF (Ajinomoto Build-up Film) package substrates for Apple Silicon; confirmed Apple Supplier",
+          "what_they_supply": "Flip-chip BGA and IC package substrates",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Unimicron Technology",
+          "short_name": "Unimicron",
+          "supplier_id": "unimicron",
+          "country": "Taiwan",
+          "headquarters_city": "Taoyuan",
+          "publicly_traded": true,
+          "ticker": "3037.TW",
+          "exchange": "TWSE",
+          "role": "Supplies HDI PCBs and IC substrates for iPhone main logic board",
+          "what_they_supply": "HDI PCBs and IC package substrates",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "AT&S",
+          "short_name": "AT&S",
+          "supplier_id": "ats",
+          "country": "Austria",
+          "headquarters_city": "Leoben, Styria",
+          "publicly_traded": true,
+          "ticker": "ATS.VI",
+          "exchange": "Vienna Stock Exchange",
+          "role": "Supplies high-density interconnect (HDI) PCBs for iPhone; confirmed Apple Supplier",
+          "what_they_supply": "High-density interconnect PCBs (mSAP technology)",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Zhen Ding Technology",
+          "short_name": "Zhen Ding",
+          "supplier_id": "zhen_ding",
+          "country": "Taiwan",
+          "headquarters_city": "Taoyuan",
+          "publicly_traded": true,
+          "ticker": "4958.TW",
+          "exchange": "TWSE",
+          "role": "Supplies flexible printed circuits (FPC) used extensively throughout iPhone for connectors and antennas",
+          "what_they_supply": "Flexible printed circuits (FPC)",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "Ajinomoto Fine-Techno",
+          "short_name": "Ajinomoto Fine-Techno",
+          "supplier_id": "ajinomoto_fine_techno",
+          "country": "Japan",
+          "headquarters_city": "Kawasaki, Kanagawa",
+          "publicly_traded": false,
+          "ticker": null,
+          "exchange": null,
+          "role": "Sole supplier of ABF (Ajinomoto Build-up Film) insulating material that gives Ibiden substrates their name",
+          "what_they_supply": "ABF insulating resin film for IC package substrates",
+          "supplies_to": ["ibiden", "unimicron"],
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Panasonic",
+          "short_name": "Panasonic",
+          "supplier_id": "panasonic",
+          "country": "Japan",
+          "headquarters_city": "Osaka",
+          "publicly_traded": true,
+          "ticker": "6752.T",
+          "exchange": "TSE",
+          "role": "Supplies MEGTRON high-speed laminate materials used in high-frequency PCB layers",
+          "what_they_supply": "High-speed PCB laminate materials (MEGTRON series)",
+          "supplies_to": ["unimicron", "ats"],
+          "relationship_confidence": "strong_indication"
+        }
+      ]
+    },
+    {
+      "component_id": "enclosure_assembly",
+      "component_name": "Enclosure, Housing & Final Assembly",
+      "category": "Assembly",
+      "description": "Precision CNC-machined aluminum (standard) or titanium (Pro) chassis, with anodized finish. Final assembly integrates all components. iPhone 15+ uses titanium frames for Pro and aluminum for standard models.",
+      "direct_suppliers": [
+        {
+          "company_name": "Foxconn / Hon Hai Precision Industry",
+          "short_name": "Foxconn",
+          "supplier_id": "foxconn",
+          "country": "Taiwan",
+          "headquarters_city": "New Taipei City",
+          "publicly_traded": true,
+          "ticker": "2317.TW",
+          "exchange": "TWSE",
+          "role": "Primary final assembly contractor; Zhengzhou facility (China) is the world's largest iPhone factory",
+          "what_they_supply": "Final assembly and system integration",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Pegatron",
+          "short_name": "Pegatron",
+          "supplier_id": "pegatron",
+          "country": "Taiwan",
+          "headquarters_city": "Taipei",
+          "publicly_traded": true,
+          "ticker": "4938.TW",
+          "exchange": "TWSE",
+          "role": "Secondary final assembly contractor; facilities in Shanghai and Indonesia",
+          "what_they_supply": "Final assembly",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Luxshare Precision Industry",
+          "short_name": "Luxshare",
+          "supplier_id": "luxshare",
+          "country": "China",
+          "headquarters_city": "Shenzhen",
+          "publicly_traded": true,
+          "ticker": "002475.SZ",
+          "exchange": "SZSE",
+          "role": "Tertiary and growing assembly partner; also supplies connectors and cables",
+          "what_they_supply": "Final assembly, connectors, cables",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Catcher Technology",
+          "short_name": "Catcher",
+          "supplier_id": "catcher_technology",
+          "country": "Taiwan",
+          "headquarters_city": "Tucheng, New Taipei City",
+          "publicly_traded": true,
+          "ticker": "2474.TW",
+          "exchange": "TWSE",
+          "role": "Primary CNC machining supplier for aluminum and titanium iPhone chassis",
+          "what_they_supply": "CNC-machined aluminum and titanium chassis / enclosures",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Casetek Holdings",
+          "short_name": "Casetek",
+          "supplier_id": "casetek",
+          "country": "Taiwan",
+          "headquarters_city": "Zhongli, Taoyuan",
+          "publicly_traded": false,
+          "ticker": null,
+          "exchange": null,
+          "role": "Secondary metal enclosure supplier; subsidiary of Pegatron",
+          "what_they_supply": "Metal chassis and enclosure components",
+          "relationship_confidence": "confirmed"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "Novelis",
+          "short_name": "Novelis",
+          "supplier_id": "novelis",
+          "country": "United States / India",
+          "headquarters_city": "Atlanta, GA",
+          "publicly_traded": false,
+          "ticker": null,
+          "exchange": null,
+          "role": "Supplies high-strength aerospace-grade aluminum alloy sheet (subsidiary of Hindalco Industries)",
+          "what_they_supply": "Aerospace-grade aluminum alloy sheet stock for CNC machining",
+          "supplies_to": ["catcher_technology", "casetek"],
+          "relationship_confidence": "strong_indication"
+        },
+        {
+          "company_name": "Allegheny Technologies (ATI)",
+          "short_name": "ATI",
+          "supplier_id": "allegheny_technologies",
+          "country": "United States",
+          "headquarters_city": "Dallas, TX",
+          "publicly_traded": true,
+          "ticker": "ATI",
+          "exchange": "NYSE",
+          "role": "Supplies titanium alloy used in iPhone 15/16 Pro titanium frame (alternative to Russian VSMPO-AVISMA post-2022)",
+          "what_they_supply": "Titanium alloy for Pro model chassis",
+          "supplies_to": ["catcher_technology"],
+          "relationship_confidence": "strong_indication"
+        },
+        {
+          "company_name": "Henkel",
+          "short_name": "Henkel",
+          "supplier_id": "henkel",
+          "country": "Germany",
+          "headquarters_city": "Düsseldorf",
+          "publicly_traded": true,
+          "ticker": "HENKY",
+          "exchange": "OTC / XETRA",
+          "role": "Supplies structural adhesives and thermal interface materials used in iPhone assembly",
+          "what_they_supply": "Structural adhesives, thermal interface materials, underfill materials",
+          "supplies_to": ["foxconn", "pegatron", "luxshare"],
+          "relationship_confidence": "strong_indication"
+        }
+      ],
+      "notes": "Titanium supply chain for Pro models is sensitive to geopolitical factors. Prior to 2022 Russia sanctions, VSMPO-AVISMA was a major titanium supplier to the aerospace/consumer electronics supply chain. Apple and its assemblers have diversified to US (ATI), Japanese, and other sources."
+    },
+    {
+      "component_id": "usb_c_connector",
+      "component_name": "USB-C Connector",
+      "category": "Connector",
+      "description": "USB-C port introduced in iPhone 15 (replacing Lightning). Supports USB 3.2 Gen 2 speeds on Pro models and USB 2.0 on standard models. Also used for MagSafe-based charging via separate induction coil assembly.",
+      "direct_suppliers": [
+        {
+          "company_name": "Foxconn Interconnect Technology (FIT)",
+          "short_name": "FIT",
+          "supplier_id": "foxconn_interconnect",
+          "country": "Taiwan",
+          "headquarters_city": "New Taipei City",
+          "publicly_traded": true,
+          "ticker": "6088.TW",
+          "exchange": "TWSE",
+          "role": "Primary supplier of USB-C connectors for iPhone 15/16 series",
+          "what_they_supply": "USB-C connector assemblies",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Luxshare Precision Industry",
+          "short_name": "Luxshare",
+          "supplier_id": "luxshare",
+          "country": "China",
+          "headquarters_city": "Shenzhen",
+          "publicly_traded": true,
+          "ticker": "002475.SZ",
+          "exchange": "SZSE",
+          "role": "Secondary supplier of USB-C connectors and cable assemblies",
+          "what_they_supply": "USB-C connector assemblies",
+          "relationship_confidence": "confirmed"
+        },
+        {
+          "company_name": "Japan Aviation Electronics Industry (JAE)",
+          "short_name": "JAE",
+          "supplier_id": "jae",
+          "country": "Japan",
+          "headquarters_city": "Tokyo",
+          "publicly_traded": true,
+          "ticker": "6807.T",
+          "exchange": "TSE",
+          "role": "Supplies precision connector contact components for USB-C",
+          "what_they_supply": "Precision connector contact components",
+          "relationship_confidence": "strong_indication"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "Materion Corporation",
+          "short_name": "Materion",
+          "supplier_id": "materion",
+          "country": "United States",
+          "headquarters_city": "Mayfield Heights, OH",
+          "publicly_traded": true,
+          "ticker": "MTRN",
+          "exchange": "NYSE",
+          "role": "Supplies beryllium copper alloy strip used for high-cycle, high-conductivity connector spring contacts",
+          "what_they_supply": "Beryllium copper alloy for connector spring contacts",
+          "supplies_to": ["foxconn_interconnect", "luxshare", "jae"],
+          "relationship_confidence": "inferred"
+        }
+      ]
+    },
+    {
+      "component_id": "sapphire_glass",
+      "component_name": "Sapphire Glass (Camera Lens Cover)",
+      "category": "Optics",
+      "description": "Synthetic sapphire (single-crystal Al2O3) used as the hard protective cover over camera lenses due to its extreme scratch resistance (Mohs 9). Also used for the rear camera flash lens cover.",
+      "direct_suppliers": [
+        {
+          "company_name": "Rubicon Technology",
+          "short_name": "Rubicon",
+          "supplier_id": "rubicon_technology",
+          "country": "United States",
+          "headquarters_city": "Batavia, IL",
+          "publicly_traded": true,
+          "ticker": "RBCN",
+          "exchange": "NASDAQ",
+          "role": "US-based grower and polisher of synthetic sapphire boules for optical windows",
+          "what_they_supply": "Synthetic sapphire optical windows (camera lens cover)",
+          "relationship_confidence": "strong_indication"
+        },
+        {
+          "company_name": "Harbin Aurora Optoelectronics Technology",
+          "short_name": "Aurora Optoelectronics",
+          "supplier_id": "aurora_optoelectronics",
+          "country": "China",
+          "headquarters_city": "Harbin, Heilongjiang",
+          "publicly_traded": false,
+          "ticker": null,
+          "exchange": null,
+          "role": "Chinese sapphire crystal grower and polisher supplying cover windows at scale",
+          "what_they_supply": "Synthetic sapphire optical windows",
+          "relationship_confidence": "strong_indication"
+        }
+      ],
+      "indirect_suppliers": [
+        {
+          "company_name": "Kyocera",
+          "short_name": "Kyocera",
+          "supplier_id": "kyocera",
+          "country": "Japan",
+          "headquarters_city": "Kyoto",
+          "publicly_traded": true,
+          "ticker": "6971.T",
+          "exchange": "TSE",
+          "role": "Provides sapphire polishing, precision cutting, and finishing services for optical components",
+          "what_they_supply": "Sapphire polishing and precision optical finishing",
+          "supplies_to": ["rubicon_technology"],
+          "relationship_confidence": "inferred"
+        },
+        {
+          "company_name": "Coorstek",
+          "short_name": "Coorstek",
+          "supplier_id": "coorstek",
+          "country": "United States",
+          "headquarters_city": "Golden, CO",
+          "publicly_traded": false,
+          "ticker": null,
+          "exchange": null,
+          "role": "Supplies high-purity alumina (Al2O3) powder — the raw material from which synthetic sapphire crystals are grown",
+          "what_they_supply": "High-purity alumina raw material for sapphire crystal growing",
+          "supplies_to": ["rubicon_technology", "aurora_optoelectronics"],
+          "relationship_confidence": "inferred"
+        }
+      ]
+    }
+  ]
+}
