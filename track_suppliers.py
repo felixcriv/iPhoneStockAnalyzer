@@ -22,7 +22,6 @@ import argparse
 import csv
 import json
 import sys
-import tempfile
 import webbrowser
 from collections import defaultdict
 from datetime import datetime, timezone
@@ -205,9 +204,15 @@ def fmt_mktcap(mkt_cap) -> str:
     return f"${mkt_cap:,.0f}"
 
 
-def build_country_graph(suppliers: list[dict]) -> None:
+_GRAPH_DEFAULT_PATH = Path(__file__).parent / "output" / "country_map.html"
+
+
+def build_country_graph(suppliers: list[dict], output_path: Path | None = None) -> Path:
     """Build an interactive Plotly chart (choropleth + stacked bar) grouped by
-    supplier country and open it in the default browser."""
+    supplier country, save to *output_path* (default: output/country_map.html),
+    and open it in the default browser."""
+    if output_path is None:
+        output_path = _GRAPH_DEFAULT_PATH
     try:
         import plotly.graph_objects as go
         from plotly.subplots import make_subplots
@@ -301,10 +306,12 @@ def build_country_graph(suppliers: list[dict]) -> None:
     )
     fig.update_yaxes(title_text="Number of suppliers", row=2, col=1)
 
-    tmp = tempfile.NamedTemporaryFile(suffix=".html", delete=False, prefix="iphone_suppliers_map_")
-    fig.write_html(tmp.name)
-    print(f"Graph saved → {tmp.name}")
-    webbrowser.open(f"file://{tmp.name}")
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.write_html(str(output_path))
+    print(f"Graph saved → {output_path}")
+    webbrowser.open(output_path.resolve().as_uri())
+    return output_path
 
 
 SORT_KEYS = {
