@@ -43,14 +43,17 @@ jobs:
           fi
           python track_suppliers.py $ARGS
 
-      - name: Commit and push updated CSV
+      - name: Regenerate country map
+        run: python track_suppliers.py --graph
+
+      - name: Commit and push updated data + map
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/stock_prices.csv
+          git add data/stock_prices.csv docs/index.html
           if git diff --cached --quiet; then
-            echo "No new data to commit."
+            echo "No changes to commit."
           else
-            git commit -m "chore: update stock prices snapshot $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git commit -m "chore: update stock prices + map $(date -u '+%Y-%m-%d %H:%M UTC')"
             git push
           fi

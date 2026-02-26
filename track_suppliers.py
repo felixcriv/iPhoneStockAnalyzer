@@ -204,7 +204,7 @@ def fmt_mktcap(mkt_cap) -> str:
     return f"${mkt_cap:,.0f}"
 
 
-_GRAPH_DEFAULT_PATH = Path(__file__).parent / "output" / "country_map.html"
+_GRAPH_DEFAULT_PATH = Path(__file__).parent / "docs" / "index.html"
 
 
 def build_country_graph(suppliers: list[dict], output_path: Path | None = None) -> Path:
