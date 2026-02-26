@@ -13,11 +13,14 @@ Options:
     --indirect-only     Show only indirect suppliers
     --sort-by FIELD     Sort by: name, ticker, exchange, price, change, mktcap (default: name)
     --top N             Show only the top N suppliers by market cap
+    --output PATH       Append results to a CSV file (creates it if missing)
 """
 
 import argparse
+import csv
 import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 
 try:
@@ -190,6 +193,8 @@ def parse_args() -> argparse.Namespace:
                    metavar="FIELD", help="Sort field: " + ", ".join(SORT_KEYS))
     p.add_argument("--top", type=int, metavar="N",
                    help="Show top N suppliers by market cap")
+    p.add_argument("--output", metavar="PATH",
+                   help="Append results to a CSV file (creates it if missing)")
     return p.parse_args()
 
 
@@ -264,6 +269,33 @@ def main():
     print()
     print(tabulate(rows, headers=headers, tablefmt="rounded_outline"))
     print(f"\n{len(rows)} suppliers shown  |  Data: Yahoo Finance via yfinance")
+
+    if args.output:
+        append_to_csv(suppliers, args.output)
+
+
+def append_to_csv(suppliers: list[dict], output_path: str) -> None:
+    """Append the current snapshot to a CSV file, adding a header row if new."""
+    path = Path(output_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    is_new = not path.exists() or path.stat().st_size == 0
+
+    fetched_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+    fieldnames = [
+        "fetched_at", "ticker", "exchange", "company_name", "short_name",
+        "country", "tier", "currency", "price", "prev_close", "change_pct",
+        "market_cap", "confidence",
+    ]
+
+    with path.open("a", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames, extrasaction="ignore")
+        if is_new:
+            writer.writeheader()
+        for s in suppliers:
+            writer.writerow({**s, "fetched_at": fetched_at})
+
+    print(f"Results appended to {path}  ({len(suppliers)} rows, timestamp: {fetched_at})")
 
 
 if __name__ == "__main__":

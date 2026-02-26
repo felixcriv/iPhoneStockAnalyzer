@@ -1,0 +1,56 @@
+name: Fetch Supplier Stock Prices
+
+on:
+  workflow_dispatch:
+    inputs:
+      top:
+        description: "Limit to top N suppliers by market cap (leave blank for all)"
+        required: false
+        default: ""
+      direct_only:
+        description: "Direct suppliers only?"
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # needed to push the updated CSV back to the repo
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch stock prices
+        run: |
+          ARGS="--output data/stock_prices.csv"
+          if [ -n "${{ inputs.top }}" ]; then
+            ARGS="$ARGS --top ${{ inputs.top }}"
+          fi
+          if [ "${{ inputs.direct_only }}" = "true" ]; then
+            ARGS="$ARGS --direct-only"
+          fi
+          python track_suppliers.py $ARGS
+
+      - name: Commit and push updated CSV
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/stock_prices.csv
+          if git diff --cached --quiet; then
+            echo "No new data to commit."
+          else
+            git commit -m "chore: update stock prices snapshot $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git push
+          fi
