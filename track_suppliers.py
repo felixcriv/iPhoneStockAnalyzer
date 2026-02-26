@@ -11,9 +11,10 @@ Options:
     --country COUNTRY   Filter by country (can be repeated)
     --direct-only       Show only direct suppliers
     --indirect-only     Show only indirect suppliers
-    --sort-by FIELD     Sort by: name, ticker, exchange, price, change, mktcap (default: name)
+    --sort-by FIELD     Sort by: name, ticker, exchange, price, change, mktcap (default: price)
     --top N             Show only the top N suppliers by market cap
     --output PATH       Append results to a CSV file (creates it if missing)
+    --no-usd            Keep prices in each stock's native currency instead of converting to USD
 """
 
 import argparse
@@ -130,6 +131,47 @@ def fetch_prices(suppliers: list[dict]) -> list[dict]:
     return enriched
 
 
+def fetch_fx_rates(currencies: set[str]) -> dict[str, float]:
+    """Fetch exchange rates to USD for each non-USD currency via yfinance.
+    Returns a dict of {currency_code: rate_to_usd}."""
+    rates: dict[str, float] = {"USD": 1.0}
+    pairs = {c: f"{c}USD=X" for c in currencies if c and c != "USD"}
+    if not pairs:
+        return rates
+
+    print(f"Fetching FX rates for: {', '.join(sorted(pairs))} …", flush=True)
+    raw = yf.Tickers(" ".join(pairs.values()))
+
+    for currency, pair in pairs.items():
+        try:
+            rate = raw.tickers[pair].fast_info.last_price
+            if rate:
+                rates[currency] = rate
+        except Exception:
+            pass  # leave missing currencies unconverted
+
+    return rates
+
+
+def convert_to_usd(suppliers: list[dict], fx_rates: dict[str, float]) -> list[dict]:
+    """Return a copy of suppliers with price, prev_close, and market_cap
+    converted to USD using the provided FX rates."""
+    converted = []
+    for s in suppliers:
+        rate = fx_rates.get(s.get("currency", "USD"), None)
+        if rate is None or s["currency"] == "USD":
+            converted.append({**s, "currency": "USD"})
+            continue
+        converted.append({
+            **s,
+            "price":      s["price"] * rate if s["price"] is not None else None,
+            "prev_close": s["prev_close"] * rate if s["prev_close"] is not None else None,
+            "market_cap": s["market_cap"] * rate if s["market_cap"] is not None else None,
+            "currency":   "USD",
+        })
+    return converted
+
+
 # ---------------------------------------------------------------------------
 # Formatting helpers
 # ---------------------------------------------------------------------------
@@ -189,12 +231,14 @@ def parse_args() -> argparse.Namespace:
                    help="Show only direct Apple suppliers")
     p.add_argument("--indirect-only", action="store_true",
                    help="Show only indirect suppliers")
-    p.add_argument("--sort-by", choices=list(SORT_KEYS), default="name",
+    p.add_argument("--sort-by", choices=list(SORT_KEYS), default="price",
                    metavar="FIELD", help="Sort field: " + ", ".join(SORT_KEYS))
     p.add_argument("--top", type=int, metavar="N",
                    help="Show top N suppliers by market cap")
     p.add_argument("--output", metavar="PATH",
                    help="Append results to a CSV file (creates it if missing)")
+    p.add_argument("--no-usd", action="store_true",
+                   help="Keep prices in native currency instead of converting to USD")
     return p.parse_args()
 
 
@@ -238,6 +282,12 @@ def main():
 
     suppliers = fetch_prices(suppliers)
 
+    # USD conversion (default on; skip with --no-usd)
+    if not args.no_usd:
+        currencies = {s["currency"] for s in suppliers if s.get("currency")}
+        fx_rates = fetch_fx_rates(currencies)
+        suppliers = convert_to_usd(suppliers, fx_rates)
+
     # Sort
     sort_fn = SORT_KEYS.get(args.sort_by, SORT_KEYS["name"])
     suppliers.sort(key=sort_fn, reverse=(args.sort_by in {"price", "change", "mktcap"}))
@@ -266,9 +316,10 @@ def main():
             s["confidence"],
         ])
 
+    currency_note = "prices in USD" if not args.no_usd else "prices in native currency"
     print()
     print(tabulate(rows, headers=headers, tablefmt="rounded_outline"))
-    print(f"\n{len(rows)} suppliers shown  |  Data: Yahoo Finance via yfinance")
+    print(f"\n{len(rows)} suppliers shown  |  {currency_note}  |  Data: Yahoo Finance via yfinance")
 
     if args.output:
         append_to_csv(suppliers, args.output)
