@@ -67,7 +67,9 @@
           "exchange": "NASDAQ",
           "role": "Sole global supplier of EUV lithography machines required for sub-7nm chip fabrication",
           "what_they_supply": "Extreme Ultraviolet (EUV) lithography equipment",
-          "supplies_to": ["tsmc"],
+          "supplies_to": [
+            "tsmc"
+          ],
           "relationship_confidence": "confirmed"
         },
         {
@@ -81,7 +83,9 @@
           "exchange": "NASDAQ",
           "role": "Supplies CVD, PVD, and CMP equipment critical to semiconductor wafer processing",
           "what_they_supply": "Semiconductor manufacturing equipment (deposition, etch, CMP)",
-          "supplies_to": ["tsmc"],
+          "supplies_to": [
+            "tsmc"
+          ],
           "relationship_confidence": "confirmed"
         },
         {
@@ -95,7 +99,9 @@
           "exchange": "NASDAQ",
           "role": "Supplies etch and deposition systems for advanced logic fabs",
           "what_they_supply": "Plasma etch and CVD/ALD deposition equipment",
-          "supplies_to": ["tsmc"],
+          "supplies_to": [
+            "tsmc"
+          ],
           "relationship_confidence": "confirmed"
         },
         {
@@ -109,7 +115,9 @@
           "exchange": "NASDAQ",
           "role": "Process control and inspection equipment for semiconductor fabs",
           "what_they_supply": "Wafer inspection and metrology equipment",
-          "supplies_to": ["tsmc"],
+          "supplies_to": [
+            "tsmc"
+          ],
           "relationship_confidence": "confirmed"
         },
         {
@@ -123,7 +131,9 @@
           "exchange": "TSE",
           "role": "World's largest silicon wafer manufacturer; supplies polished 300mm wafers",
           "what_they_supply": "300mm prime silicon wafers",
-          "supplies_to": ["tsmc"],
+          "supplies_to": [
+            "tsmc"
+          ],
           "relationship_confidence": "confirmed"
         },
         {
@@ -137,7 +147,9 @@
           "exchange": "TSE",
           "role": "Manufactures flip-chip BGA substrates used to package Apple Silicon chips",
           "what_they_supply": "Advanced IC package substrates (ABF substrates)",
-          "supplies_to": ["tsmc"],
+          "supplies_to": [
+            "tsmc"
+          ],
           "relationship_confidence": "confirmed"
         }
       ],
@@ -204,7 +216,11 @@
           "exchange": "NYSE",
           "role": "Supplies Ceramic Shield and Gorilla Glass for display cover glass",
           "what_they_supply": "Aluminosilicate cover glass (Ceramic Shield)",
-          "supplies_to": ["samsung_display", "lg_display", "boe_technology"],
+          "supplies_to": [
+            "samsung_display",
+            "lg_display",
+            "boe_technology"
+          ],
           "relationship_confidence": "confirmed"
         },
         {
@@ -218,7 +234,10 @@
           "exchange": "TSE",
           "role": "Supplies optical films and polarizers used in OLED panel construction",
           "what_they_supply": "Optical films, polarizers, adhesive films",
-          "supplies_to": ["samsung_display", "lg_display"],
+          "supplies_to": [
+            "samsung_display",
+            "lg_display"
+          ],
           "relationship_confidence": "strong_indication"
         },
         {
@@ -232,7 +251,10 @@
           "exchange": "NASDAQ",
           "role": "Licenses phosphorescent OLED (PHOLED) materials and technology to panel makers",
           "what_they_supply": "Phosphorescent OLED emitter materials and technology licenses",
-          "supplies_to": ["samsung_display", "lg_display"],
+          "supplies_to": [
+            "samsung_display",
+            "lg_display"
+          ],
           "relationship_confidence": "confirmed"
         },
         {
@@ -246,7 +268,10 @@
           "exchange": "XETRA",
           "role": "Supplies organic light-emitting materials and liquid crystals for OLED displays",
           "what_they_supply": "OLED organic emitter materials",
-          "supplies_to": ["samsung_display", "lg_display"],
+          "supplies_to": [
+            "samsung_display",
+            "lg_display"
+          ],
           "relationship_confidence": "strong_indication"
         },
         {
@@ -260,7 +285,10 @@
           "exchange": "TSE",
           "role": "Supplies polarizing films and OLED functional materials",
           "what_they_supply": "Polarizer films, OLED materials",
-          "supplies_to": ["samsung_display", "lg_display"],
+          "supplies_to": [
+            "samsung_display",
+            "lg_display"
+          ],
           "relationship_confidence": "strong_indication"
         }
       ]
@@ -302,7 +330,9 @@
           "exchange": "NYSE",
           "role": "Fabricates logic tier of Sony's stacked image sensors when Sony outsources wafer capacity",
           "what_they_supply": "Logic wafer fabrication for stacked sensor architecture",
-          "supplies_to": ["sony_semiconductor"],
+          "supplies_to": [
+            "sony_semiconductor"
+          ],
           "relationship_confidence": "strong_indication"
         },
         {
@@ -316,7 +346,9 @@
           "exchange": "TSE",
           "role": "Supplies silicon wafers to Sony Semiconductor fabs",
           "what_they_supply": "300mm prime silicon wafers",
-          "supplies_to": ["sony_semiconductor"],
+          "supplies_to": [
+            "sony_semiconductor"
+          ],
           "relationship_confidence": "inferred"
         }
       ]
@@ -366,7 +398,10 @@
           "exchange": "TSE",
           "role": "Supplies cyclo-olefin polymer (COP/COC) resins used to mold precision optical lens elements",
           "what_they_supply": "Cyclo-olefin polymer optical resins",
-          "supplies_to": ["largan_precision", "genius_optical"],
+          "supplies_to": [
+            "largan_precision",
+            "genius_optical"
+          ],
           "relationship_confidence": "strong_indication"
         },
         {
@@ -380,7 +415,9 @@
           "exchange": "TSE",
           "role": "Supplies specialty optical-grade plastic resins for lens molding",
           "what_they_supply": "Optical-grade plastic resins",
-          "supplies_to": ["largan_precision"],
+          "supplies_to": [
+            "largan_precision"
+          ],
           "relationship_confidence": "inferred"
         }
       ]
@@ -430,7 +467,10 @@
           "exchange": "TWSE",
           "role": "Supplies lens assemblies integrated into camera modules",
           "what_they_supply": "Lens assemblies",
-          "supplies_to": ["lg_innotek", "cowell"],
+          "supplies_to": [
+            "lg_innotek",
+            "cowell"
+          ],
           "relationship_confidence": "confirmed"
         },
         {
@@ -444,7 +484,10 @@
           "exchange": null,
           "role": "Supplies CMOS image sensors integrated into camera modules",
           "what_they_supply": "CMOS image sensors",
-          "supplies_to": ["lg_innotek", "cowell"],
+          "supplies_to": [
+            "lg_innotek",
+            "cowell"
+          ],
           "relationship_confidence": "confirmed"
         },
         {
@@ -458,7 +501,9 @@
           "exchange": "TSE",
           "role": "Supplies voice coil motor (VCM) actuators for autofocus and OIS mechanisms",
           "what_they_supply": "Voice coil motor (VCM) actuators for autofocus and OIS",
-          "supplies_to": ["lg_innotek"],
+          "supplies_to": [
+            "lg_innotek"
+          ],
           "relationship_confidence": "strong_indication"
         },
         {
@@ -472,7 +517,9 @@
           "exchange": null,
           "role": "Subsidiary of Mitsumi Electric (acquired by Minebea Mitsumi); supplies actuator components for OIS",
           "what_they_supply": "OIS and autofocus actuator components",
-          "supplies_to": ["lg_innotek"],
+          "supplies_to": [
+            "lg_innotek"
+          ],
           "relationship_confidence": "strong_indication"
         }
       ]
@@ -535,7 +582,9 @@
           "exchange": "TSE",
           "role": "Parent company of ATL; provides technical oversight and some material inputs",
           "what_they_supply": "Battery materials and technology via ATL ownership",
-          "supplies_to": ["atl"],
+          "supplies_to": [
+            "atl"
+          ],
           "relationship_confidence": "confirmed"
         },
         {
@@ -549,7 +598,10 @@
           "exchange": "HKEX",
           "role": "Supplies lithium hydroxide and lithium carbonate used in cathode active materials",
           "what_they_supply": "Lithium hydroxide and lithium carbonate (cathode precursor)",
-          "supplies_to": ["atl", "sunwoda"],
+          "supplies_to": [
+            "atl",
+            "sunwoda"
+          ],
           "relationship_confidence": "strong_indication"
         },
         {
@@ -563,7 +615,10 @@
           "exchange": "NYSE",
           "role": "Global lithium producer; supplies lithium compounds for battery cathode materials",
           "what_they_supply": "Lithium compounds (battery-grade lithium hydroxide)",
-          "supplies_to": ["atl", "sunwoda"],
+          "supplies_to": [
+            "atl",
+            "sunwoda"
+          ],
           "relationship_confidence": "strong_indication"
         },
         {
@@ -577,7 +632,9 @@
           "exchange": "Euronext Brussels",
           "role": "Supplies cathode active materials (NMC) for lithium-ion batteries",
           "what_they_supply": "NMC cathode active materials",
-          "supplies_to": ["atl"],
+          "supplies_to": [
+            "atl"
+          ],
           "relationship_confidence": "strong_indication"
         },
         {
@@ -591,7 +648,10 @@
           "exchange": "TSE",
           "role": "Manufactures battery separator films via its Celgard subsidiary",
           "what_they_supply": "Lithium-ion battery separator films (via Celgard)",
-          "supplies_to": ["atl", "sunwoda"],
+          "supplies_to": [
+            "atl",
+            "sunwoda"
+          ],
           "relationship_confidence": "strong_indication"
         }
       ]
@@ -654,7 +714,11 @@
           "exchange": "NASDAQ",
           "role": "Supplies DUV/EUV lithography equipment to all NAND fabs for patterning",
           "what_they_supply": "DUV and EUV lithography equipment",
-          "supplies_to": ["kioxia", "sk_hynix", "samsung_electronics"],
+          "supplies_to": [
+            "kioxia",
+            "sk_hynix",
+            "samsung_electronics"
+          ],
           "relationship_confidence": "confirmed"
         },
         {
@@ -668,7 +732,11 @@
           "exchange": "NASDAQ",
           "role": "Supplies etch equipment critical for high-aspect-ratio 3D NAND channel hole etching",
           "what_they_supply": "High-aspect-ratio etch equipment for 3D NAND",
-          "supplies_to": ["kioxia", "sk_hynix", "samsung_electronics"],
+          "supplies_to": [
+            "kioxia",
+            "sk_hynix",
+            "samsung_electronics"
+          ],
           "relationship_confidence": "confirmed"
         },
         {
@@ -682,7 +750,9 @@
           "exchange": "NASDAQ",
           "role": "Joint venture partner with Kioxia; co-develops and co-manufactures NAND flash at shared fabs in Japan",
           "what_they_supply": "Co-manufacturing via Kioxia JV (shared fab capacity)",
-          "supplies_to": ["kioxia"],
+          "supplies_to": [
+            "kioxia"
+          ],
           "relationship_confidence": "confirmed"
         }
       ]
@@ -745,7 +815,11 @@
           "exchange": "NASDAQ",
           "role": "Supplies EUV lithography equipment used in advanced DRAM node production",
           "what_they_supply": "EUV/DUV lithography equipment",
-          "supplies_to": ["sk_hynix", "samsung_electronics", "micron"],
+          "supplies_to": [
+            "sk_hynix",
+            "samsung_electronics",
+            "micron"
+          ],
           "relationship_confidence": "confirmed"
         },
         {
@@ -759,7 +833,10 @@
           "exchange": "NASDAQ",
           "role": "Supplies specialty chemicals, filtration, and materials management systems for DRAM fabs",
           "what_they_supply": "Specialty chemicals, filtration systems, and contamination control materials",
-          "supplies_to": ["sk_hynix", "micron"],
+          "supplies_to": [
+            "sk_hynix",
+            "micron"
+          ],
           "relationship_confidence": "confirmed"
         }
       ]
@@ -796,7 +873,9 @@
           "exchange": "NYSE",
           "role": "Fabricates Qualcomm Snapdragon modem chips and Apple's in-house C1 modem on advanced nodes",
           "what_they_supply": "Wafer fabrication for modem chips",
-          "supplies_to": ["qualcomm"],
+          "supplies_to": [
+            "qualcomm"
+          ],
           "relationship_confidence": "confirmed"
         },
         {
@@ -810,7 +889,9 @@
           "exchange": "TSE",
           "role": "Supplies RF modules and passive components that accompany the modem chipset",
           "what_they_supply": "RF modules, SAW/BAW filters, and passive components",
-          "supplies_to": ["qualcomm"],
+          "supplies_to": [
+            "qualcomm"
+          ],
           "relationship_confidence": "strong_indication"
         }
       ],
@@ -861,7 +942,9 @@
           "exchange": "NYSE",
           "role": "Fabricates Broadcom Wi-Fi/BT chips and Apple's W-series/U-series wireless chips",
           "what_they_supply": "Wafer fabrication for wireless chips",
-          "supplies_to": ["broadcom"],
+          "supplies_to": [
+            "broadcom"
+          ],
           "relationship_confidence": "confirmed"
         }
       ]
@@ -924,7 +1007,10 @@
           "exchange": "TWSE",
           "role": "GaAs compound semiconductor foundry; fabricates power amplifier wafers for Skyworks and Qorvo",
           "what_they_supply": "GaAs and GaN wafer fabrication for RF power amplifiers",
-          "supplies_to": ["skyworks", "qorvo"],
+          "supplies_to": [
+            "skyworks",
+            "qorvo"
+          ],
           "relationship_confidence": "confirmed"
         },
         {
@@ -938,7 +1024,10 @@
           "exchange": "TSE",
           "role": "Supplies GaAs epitaxial wafers to compound semiconductor foundries",
           "what_they_supply": "GaAs epitaxial wafers",
-          "supplies_to": ["win_semiconductors"],
+          "supplies_to": [
+            "skyworks",
+            "qorvo"
+          ],
           "relationship_confidence": "strong_indication"
         },
         {
@@ -952,7 +1041,10 @@
           "exchange": "TSE",
           "role": "Supplies thin-film BAW filter technology components and passive components for RF front end",
           "what_they_supply": "BAW filter components and RF passive components",
-          "supplies_to": ["murata", "qorvo"],
+          "supplies_to": [
+            "murata",
+            "qorvo"
+          ],
           "relationship_confidence": "strong_indication"
         }
       ]
@@ -1002,7 +1094,9 @@
           "exchange": "NYSE",
           "role": "Fabricates Apple-designed in-house PMIC chips and Dialog PMIC chips on advanced nodes",
           "what_they_supply": "Wafer fabrication for PMIC chips",
-          "supplies_to": ["renesas"],
+          "supplies_to": [
+            "renesas"
+          ],
           "relationship_confidence": "strong_indication"
         },
         {
@@ -1016,7 +1110,9 @@
           "exchange": "NASDAQ",
           "role": "Alternative foundry used by Texas Instruments for some PMIC products",
           "what_they_supply": "Wafer fabrication for mixed-signal ICs",
-          "supplies_to": ["texas_instruments"],
+          "supplies_to": [
+            "texas_instruments"
+          ],
           "relationship_confidence": "inferred"
         }
       ]
@@ -1079,7 +1175,10 @@
           "exchange": "LSE AIM",
           "role": "Supplies compound semiconductor (GaAs/InGaP) epitaxial wafers used to produce VCSELs",
           "what_they_supply": "Compound semiconductor epitaxial wafers for VCSEL production",
-          "supplies_to": ["lumentum", "coherent"],
+          "supplies_to": [
+            "lumentum",
+            "coherent"
+          ],
           "relationship_confidence": "confirmed"
         },
         {
@@ -1093,7 +1192,9 @@
           "exchange": null,
           "role": "Supplies the infrared image sensor used in the TrueDepth camera for Face ID",
           "what_they_supply": "Infrared CMOS image sensor",
-          "supplies_to": ["lumentum"],
+          "supplies_to": [
+            "lumentum"
+          ],
           "relationship_confidence": "strong_indication"
         }
       ]
@@ -1169,7 +1270,9 @@
           "exchange": "NYSE",
           "role": "Fabricates Cirrus Logic audio chips on advanced CMOS process nodes",
           "what_they_supply": "Wafer fabrication for audio ICs",
-          "supplies_to": ["cirrus_logic"],
+          "supplies_to": [
+            "cirrus_logic"
+          ],
           "relationship_confidence": "confirmed"
         }
       ]
@@ -1206,7 +1309,9 @@
           "exchange": "NYSE",
           "role": "Fabricates NXP's NFC controller chips",
           "what_they_supply": "Wafer fabrication for NFC chips",
-          "supplies_to": ["nxp"],
+          "supplies_to": [
+            "nxp"
+          ],
           "relationship_confidence": "strong_indication"
         },
         {
@@ -1220,7 +1325,9 @@
           "exchange": null,
           "role": "Secondary foundry used by NXP for some chip variants",
           "what_they_supply": "Wafer fabrication services",
-          "supplies_to": ["nxp"],
+          "supplies_to": [
+            "nxp"
+          ],
           "relationship_confidence": "inferred"
         }
       ]
@@ -1270,7 +1377,9 @@
           "exchange": "NASDAQ",
           "role": "Supplies MEMS deposition and etch equipment to STMicroelectronics MEMS fabs",
           "what_they_supply": "Semiconductor manufacturing equipment for MEMS fabs",
-          "supplies_to": ["stmicroelectronics"],
+          "supplies_to": [
+            "stmicroelectronics"
+          ],
           "relationship_confidence": "inferred"
         }
       ]
@@ -1307,7 +1416,9 @@
           "exchange": "NYSE",
           "role": "Fabricates ams OSRAM sensor ICs on CMOS process nodes",
           "what_they_supply": "Wafer fabrication for sensor ICs",
-          "supplies_to": ["ams_osram"],
+          "supplies_to": [
+            "ams_osram"
+          ],
           "relationship_confidence": "strong_indication"
         },
         {
@@ -1321,7 +1432,9 @@
           "exchange": "TWSE",
           "role": "Supplies IR LED emitters used in proximity sensing",
           "what_they_supply": "IR LED emitter chips",
-          "supplies_to": ["ams_osram"],
+          "supplies_to": [
+            "ams_osram"
+          ],
           "relationship_confidence": "inferred"
         }
       ]
@@ -1371,7 +1484,10 @@
           "exchange": "SZSE",
           "role": "Major producer of NdFeB (neodymium-iron-boron) rare earth permanent magnets used in LRA actuators",
           "what_they_supply": "NdFeB rare earth permanent magnets",
-          "supplies_to": ["aac_technologies", "nidec"],
+          "supplies_to": [
+            "aac_technologies",
+            "nidec"
+          ],
           "relationship_confidence": "inferred"
         },
         {
@@ -1385,7 +1501,10 @@
           "exchange": "NYSE",
           "role": "US-based rare earth miner and processor; supplies neodymium and praseodymium for magnets",
           "what_they_supply": "Rare earth materials (NdPr) for permanent magnets",
-          "supplies_to": ["zhongke_sanhuan"],
+          "supplies_to": [
+            "aac_technologies",
+            "nidec"
+          ],
           "relationship_confidence": "inferred"
         }
       ]
@@ -1461,7 +1580,10 @@
           "exchange": null,
           "role": "Sole supplier of ABF (Ajinomoto Build-up Film) insulating material that gives Ibiden substrates their name",
           "what_they_supply": "ABF insulating resin film for IC package substrates",
-          "supplies_to": ["ibiden", "unimicron"],
+          "supplies_to": [
+            "ibiden",
+            "unimicron"
+          ],
           "relationship_confidence": "confirmed"
         },
         {
@@ -1475,7 +1597,10 @@
           "exchange": "TSE",
           "role": "Supplies MEGTRON high-speed laminate materials used in high-frequency PCB layers",
           "what_they_supply": "High-speed PCB laminate materials (MEGTRON series)",
-          "supplies_to": ["unimicron", "ats"],
+          "supplies_to": [
+            "unimicron",
+            "ats"
+          ],
           "relationship_confidence": "strong_indication"
         }
       ]
@@ -1564,7 +1689,10 @@
           "exchange": null,
           "role": "Supplies high-strength aerospace-grade aluminum alloy sheet (subsidiary of Hindalco Industries)",
           "what_they_supply": "Aerospace-grade aluminum alloy sheet stock for CNC machining",
-          "supplies_to": ["catcher_technology", "casetek"],
+          "supplies_to": [
+            "catcher_technology",
+            "casetek"
+          ],
           "relationship_confidence": "strong_indication"
         },
         {
@@ -1578,7 +1706,9 @@
           "exchange": "NYSE",
           "role": "Supplies titanium alloy used in iPhone 15/16 Pro titanium frame (alternative to Russian VSMPO-AVISMA post-2022)",
           "what_they_supply": "Titanium alloy for Pro model chassis",
-          "supplies_to": ["catcher_technology"],
+          "supplies_to": [
+            "catcher_technology"
+          ],
           "relationship_confidence": "strong_indication"
         },
         {
@@ -1586,13 +1716,17 @@
           "short_name": "Henkel",
           "supplier_id": "henkel",
           "country": "Germany",
-          "headquarters_city": "Düsseldorf",
+          "headquarters_city": "D\u00fcsseldorf",
           "publicly_traded": true,
           "ticker": "HENKY",
           "exchange": "OTC / XETRA",
           "role": "Supplies structural adhesives and thermal interface materials used in iPhone assembly",
           "what_they_supply": "Structural adhesives, thermal interface materials, underfill materials",
-          "supplies_to": ["foxconn", "pegatron", "luxshare"],
+          "supplies_to": [
+            "foxconn",
+            "pegatron",
+            "luxshare"
+          ],
           "relationship_confidence": "strong_indication"
         }
       ],
@@ -1656,7 +1790,11 @@
           "exchange": "NYSE",
           "role": "Supplies beryllium copper alloy strip used for high-cycle, high-conductivity connector spring contacts",
           "what_they_supply": "Beryllium copper alloy for connector spring contacts",
-          "supplies_to": ["foxconn_interconnect", "luxshare", "jae"],
+          "supplies_to": [
+            "foxconn_interconnect",
+            "luxshare",
+            "jae"
+          ],
           "relationship_confidence": "inferred"
         }
       ]
@@ -1706,7 +1844,9 @@
           "exchange": "TSE",
           "role": "Provides sapphire polishing, precision cutting, and finishing services for optical components",
           "what_they_supply": "Sapphire polishing and precision optical finishing",
-          "supplies_to": ["rubicon_technology"],
+          "supplies_to": [
+            "rubicon_technology"
+          ],
           "relationship_confidence": "inferred"
         },
         {
@@ -1718,9 +1858,12 @@
           "publicly_traded": false,
           "ticker": null,
           "exchange": null,
-          "role": "Supplies high-purity alumina (Al2O3) powder — the raw material from which synthetic sapphire crystals are grown",
+          "role": "Supplies high-purity alumina (Al2O3) powder \u2014 the raw material from which synthetic sapphire crystals are grown",
           "what_they_supply": "High-purity alumina raw material for sapphire crystal growing",
-          "supplies_to": ["rubicon_technology", "aurora_optoelectronics"],
+          "supplies_to": [
+            "rubicon_technology",
+            "aurora_optoelectronics"
+          ],
           "relationship_confidence": "inferred"
         }
       ]
