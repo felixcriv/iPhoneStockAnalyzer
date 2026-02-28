@@ -1,6 +1,14 @@
 name: Fetch Supplier Stock Prices
 
 on:
+  # Run automatically after US market close.
+  # NYSE/NASDAQ closes at 4:00 PM ET.
+  #   EST (Nov–Mar): 4 PM ET = 21:00 UTC  →  21:15 UTC gives a 15-min buffer
+  #   EDT (Mar–Nov): 4 PM ET = 20:00 UTC  →  21:15 UTC gives a 75-min buffer
+  # Either way, 21:15 UTC Mon–Fri is always safely after the closing bell.
+  schedule:
+    - cron: "15 21 * * 1-5"
+
   workflow_dispatch:
     inputs:
       top:
