@@ -16,16 +16,19 @@ Options:
     --output PATH       Append results to a CSV file (creates it if missing)
     --no-usd            Keep prices in each stock's native currency instead of converting to USD
     --graph             Open an interactive country-distribution chart in the browser
+    --at-close          Wait until US market close (4:00 PM ET) before fetching data
 """
 
 import argparse
 import csv
 import json
 import sys
+import time
 import webbrowser
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 try:
     import yfinance as yf
@@ -314,6 +317,45 @@ def build_country_graph(suppliers: list[dict], output_path: Path | None = None) 
     return output_path
 
 
+MARKET_CLOSE_HOUR = 16   # 4:00 PM ET
+MARKET_CLOSE_MINUTE = 0
+_ET = ZoneInfo("America/New_York")
+
+
+def wait_for_market_close() -> None:
+    """Block until 4:00 PM ET today, printing a live countdown.
+
+    If the market has already closed (or it is a weekend), prints a notice
+    and returns immediately so the script continues without delay.
+    """
+    now = datetime.now(_ET)
+    close = now.replace(hour=MARKET_CLOSE_HOUR, minute=MARKET_CLOSE_MINUTE, second=0, microsecond=0)
+
+    if now.weekday() >= 5:  # Saturday=5, Sunday=6
+        print(f"Today is a weekend — market is closed. Running now ({now:%Y-%m-%d %H:%M %Z}).")
+        return
+
+    if now >= close:
+        print(f"Market already closed at {close:%H:%M %Z}. Running now ({now:%H:%M %Z}).")
+        return
+
+    wait_seconds = (close - now).total_seconds()
+    print(f"Waiting for market close at {close:%H:%M %Z} …  (≈{int(wait_seconds // 60)} min remaining)")
+
+    while True:
+        now = datetime.now(_ET)
+        remaining = (close - now).total_seconds()
+        if remaining <= 0:
+            break
+        h, rem = divmod(int(remaining), 3600)
+        m, s = divmod(rem, 60)
+        countdown = f"{h:02d}:{m:02d}:{s:02d}" if h else f"{m:02d}:{s:02d}"
+        print(f"\r  Time until close: {countdown}   ", end="", flush=True)
+        time.sleep(1)
+
+    print(f"\rMarket closed. Starting analysis …                    ")
+
+
 SORT_KEYS = {
     "name":     lambda r: (r["company_name"] or "").lower(),
     "ticker":   lambda r: (r["ticker"] or "").lower(),
@@ -354,6 +396,8 @@ def parse_args() -> argparse.Namespace:
                    help="Keep prices in native currency instead of converting to USD")
     p.add_argument("--graph", action="store_true",
                    help="Open an interactive country-distribution chart in the browser")
+    p.add_argument("--at-close", action="store_true",
+                   help="Wait until US market close (4:00 PM ET) before fetching data")
     return p.parse_args()
 
 
@@ -385,6 +429,9 @@ def apply_filters(suppliers: list[dict], args: argparse.Namespace) -> list[dict]
 
 def main():
     args = parse_args()
+
+    if args.at_close:
+        wait_for_market_close()
 
     suppliers = load_suppliers(args.data)
 
