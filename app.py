@@ -239,13 +239,13 @@ with st.sidebar:
 
     st.divider()
 
-    if st.button("🔄 Fetch Live Prices", use_container_width=True):
+    if st.button("🔄 Fetch Live Prices", width="stretch"):
         st.cache_data.clear()
         st.rerun()
 
     if st.button(
         "⏰ Fetch at Market Close",
-        use_container_width=True,
+        width="stretch",
         disabled=(status not in {"open", "pre-market"}),
         help="Waits until 4:00 PM ET, then auto-fetches prices",
     ):
@@ -327,7 +327,7 @@ for s in suppliers:
 
 df     = pd.DataFrame(rows)
 styled = df.style.map(_color_change, subset=["Change"])
-st.dataframe(styled, use_container_width=True, hide_index=True)
+st.dataframe(styled, width="stretch", hide_index=True)
 st.caption(
     f"{len(suppliers)} suppliers shown  ·  prices in {currency_note}  ·  "
     f"source: Yahoo Finance via yfinance  ·  cache TTL: 5 min"
@@ -340,7 +340,7 @@ st.divider()
 # ---------------------------------------------------------------------------
 
 st.subheader("Geographic Distribution")
-st.plotly_chart(_build_geo_chart(suppliers), use_container_width=True)
+st.plotly_chart(_build_geo_chart(suppliers), width="stretch")
 
 # ---------------------------------------------------------------------------
 # Historical snapshots
@@ -385,4 +385,4 @@ if CSV_PATH.exists():
                     legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1),
                     margin=dict(l=20, r=20, t=20, b=20),
                 )
-                st.plotly_chart(fig2, use_container_width=True)
+                st.plotly_chart(fig2, width="stretch")
